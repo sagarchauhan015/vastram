@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Navbar from '@/Components/Navbar/Navbar'
 import Categories from '@/Components/Categories/Categories'
 import Footer from '@/Components/Footer/Footer'
+import ProductCard from '@/Components/ProductCard/ProductCard'
 
 interface props{
 
@@ -19,6 +20,7 @@ export default class Home extends Component<props, state>{
     return (
       <>
         <Navbar />
+        <ProductCard />
         <Categories />
         <Footer />
       </>

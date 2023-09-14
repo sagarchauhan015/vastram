@@ -1,0 +1,212 @@
+.vtm-footer{
+    width: 100%;
+    height: auto;
+    
+}
+.vtm-footer-container{
+    width: 100%;
+    height: 100%;
+    background-color: var(--black5);
+    position: relative;
+}
+.vtm-footer-top{
+    width: 100%;
+    height: 8rem;
+    background-color: var(--black3);
+}
+.vtm-footer-middle{
+    width: 65%;
+    height: auto;
+    margin: auto;
+    padding: 2.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white1);
+    border-radius: 3px;
+    top: 50px;
+    left: 0;
+    right: 0;
+    box-shadow: 0rem 0.375rem 0.5375rem rgba(168, 168, 168, 0.332);
+}
+.vtm-footer-middle-input{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.vtm-footer-middle-text{
+    width: 50%;
+    color: var(--black1);
+}
+#text-heading-1{
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-bottom: 0.6rem;
+}
+#text-heading-2{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--black4);
+    padding-top: 0.6rem;
+}
+#vtm-middle-input-box{
+    outline: none;
+    padding: 9px;
+    width: 60%;
+    border: 1.5px solid var(--black5);
+    border-right: none;
+    border-radius: 5px 0px 0px 5px ;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--black2);
+}
+#vtm-middle-input-btn{
+    padding: 8px;
+    width: 30%;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    color: white;
+    background-color: var(--black3);
+    cursor: pointer;
+}
+#vtm-middle-input-btn:hover{
+    background-color: var(--black2);
+}
+.vtm-footer-bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--white1);
+}
+.vtm-footer-bottom-box{
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    padding: 9.375rem 0rem 5rem;
+}
+.vtm-bottom-box-logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1.5px solid #9fa4b64f;
+    padding: 0rem 30px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--black1);
+}
+.vtm-bottom-box-info{
+    font-size: 0.8rem;
+    color: var(--black4);
+    cursor: pointer;
+}
+.vtm-bottom-box-info > a{
+    color: var(--black4);
+}
+.vtm-bottom-box-navigation{
+    flex-direction: column;
+    display: flex;
+}
+.vtm-bottom-box-navigation > p{
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding-bottom: 0.8rem;
+}
+.vtm-bottom-box-navigation > a{
+    font-size: 0.8rem;
+    padding: 5px 0px;
+    color: var(--black4);
+}
+.vtm-bottom-box-navigation > a:hover{
+    color: var(--black1);
+}
+.footer-tnc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .75rem;
+    color: var(--white1);
+    background-color: var(--black3);
+}
+.footer-tnc > a{
+    margin: 0 1rem;
+    font-size: .75rem;
+    color: var(--white1);
+}
+/* Responsive CSS */
+@media screen and (min-width: 770px) and (max-width: 1030px) {
+    body{
+        overflow-x: hidden;
+    }
+    .vtm-footer-middle{
+        width: 85%;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .vtm-footer-bottom-box{
+        width: 85%;
+    }
+}
+@media screen and (min-width: 630px) and (max-width: 850px) {
+    body{
+        overflow-x: hidden;
+    }
+    .vtm-footer-middle{
+        width: 90%;
+        flex-direction: column;
+        padding: 20px 40px;
+    }
+    .vtm-footer-middle-input{
+        width: 80%;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    .vtm-footer-middle-text{
+        width: 80%;
+        text-align: center;
+    }
+    .vtm-footer-bottom-box{
+        width: 85%;
+    }
+    .vtm-footer-bottom-box{
+        padding: 11.375rem 0rem 6.375rem 0rem;
+    }
+}
+@media screen and (min-width: 310px) and (max-width: 630px) {
+    body{
+        overflow-x: hidden;
+    }
+    html{
+        font-size: 14px;
+    }
+
+    .vtm-bottom-box-logo {
+        text-align: center;
+    }
+
+    .vtm-footer-middle{
+        width: 80%;
+        flex-direction: column;
+        padding: 1rem 0rem;
+    }
+    .vtm-footer-middle-input{
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    .vtm-footer-middle-text{
+        width: 100%;
+        text-align: center;
+    }
+    .vtm-footer-bottom-box{
+        width: 65%;
+        flex-direction: column;
+        padding: 11.375rem 0rem 6.375rem 0rem;
+    }
+    .vtm-bottom-box-navigation{
+        margin-top: 2rem;
+        text-align: center;
+    }
+}

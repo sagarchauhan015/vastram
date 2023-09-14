@@ -1,6 +1,8 @@
 "use client"
 import React, { Component } from 'react'
 import Navbar from '@/Components/Navbar/Navbar'
+import Categories from '@/Components/Categories/Categories'
+import Footer from '@/Components/Footer/Footer'
 
 interface props{
 
@@ -17,6 +19,8 @@ export default class Home extends Component<props, state>{
     return (
       <>
         <Navbar />
+        <Categories />
+        <Footer />
       </>
     )
   }

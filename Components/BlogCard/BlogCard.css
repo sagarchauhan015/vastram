@@ -1,0 +1,47 @@
+.bc-container{
+    width: 270px;
+    height: 100%;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--white1);
+    box-shadow: var(--bs6);
+    position: relative;
+    cursor: pointer;
+}
+.bc-blog-img{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 0.25rem;
+}
+.bc-image{
+    width: 100%;
+    transition: 0.3s all linear;
+}
+.bc-blog-heading{
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 0.75rem;
+}
+.bc-blog-des{
+    width: 100%;
+    text-align: justify;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--black3);
+}
+.bc-blog-action{
+    margin-top: 0.5rem;
+
+}
+.bc-blog-action > a{
+    color: var(--black4);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.bc-blog-action > a:hover{
+    color: var(--black2);
+    text-decoration: underline;
+}

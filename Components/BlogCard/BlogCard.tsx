@@ -15,7 +15,7 @@ export default class BlogCard extends Component {
                 Fashion You Don't Know: A dream fashion
             </div>
             <div className="bc-blog-des">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores sunt ducimus doloribus nisi eveniet consectetur minima magni? Odit animi distinctio temporibus
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores sunt ducimus doloribus nisi eveniet consectetur minima magni? Odit animi distinctio temporibus doloribus nisi eveniet consectetur minima magni? Odit animi distinctio temporibus
             </div>
             <div className="bc-blog-action">
                 <a href="#">Read More</a>

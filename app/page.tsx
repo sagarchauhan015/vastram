@@ -21,7 +21,7 @@ export default class Home extends Component<props, state>{
     return (
       <>
         <Navbar />
-        <BlogCard />
+        {/* <BlogCard /> */}
         {/* <ProductCard /> */}
         <Categories />
         <Footer />

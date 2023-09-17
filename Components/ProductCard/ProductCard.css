@@ -52,3 +52,14 @@
 .pc-wishlist:hover > .pc-wishlist-img{
     filter: drop-shadow(0px 0px 2px red);
 }
+
+@media (max-width: 600px) and (min-width: 300px){
+    .pc-container{
+        width: 170px;
+        height: 100%;
+        margin-bottom: 1rem;
+    }
+    .pc-img{
+        height: 180px;
+    }
+}

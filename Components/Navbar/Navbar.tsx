@@ -67,7 +67,7 @@ export default class Navbar extends Component {
             </div>
 
             <div className="hamburger-menu">
-                <div className="mob-nav-links mob-nav-links-show">
+                <div className="mob-nav-links ">
                     <div className="nav-link-wrapper">
                         <div className="nav-link">
                             MEN

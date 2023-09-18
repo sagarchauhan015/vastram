@@ -10,7 +10,8 @@ interface props{
 
 }
 interface state{
-  isNavMenuOpen: boolean
+
+  
 }
 
 export default class Home extends Component<props, state>{

@@ -5,10 +5,9 @@ import shirtImg from '/public/Images/shirt.webp'
 
 import './ProductCard.css'
 
-export default class ProductCard extends Component {
-  render() {
-    return (
-      <>
+export default function ProductCard() {
+  return (
+    <>
         <div className="pc-container">
 
             <div className="pc-img">
@@ -33,6 +32,5 @@ export default class ProductCard extends Component {
             </div>
         </div>
       </>
-    )
-  }
+  )
 }

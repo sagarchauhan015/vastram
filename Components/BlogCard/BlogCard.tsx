@@ -3,10 +3,9 @@ import Image from 'next/image'
 import blogImg from '/public/Images/blogimg.gif'
 import './BlogCard.css'
 
-export default class BlogCard extends Component {
-  render() {
-    return (
-      <>
+export default function BlogCard() {
+  return (
+    <>
         <div className="bc-container">
             <div className="bc-blog-img">
                 <Image className='bc-image' src={blogImg} alt='product-image' width={300} height={250}></Image>
@@ -22,6 +21,6 @@ export default class BlogCard extends Component {
             </div>
         </div>
       </>
-    )
-  }
+  )
 }
+

@@ -5,10 +5,9 @@ import blogImg from '/public/Images/blogimg.gif'
 import tshirtImg from '/public/Images/shirt.webp'
 
 
-export default class Categories extends Component {
-  render() {
-    return (
-      <>
+export default function Categories() {
+  return (
+    <>
         <div className="ct-container">
           <div className="ct-heading">
             Categories
@@ -76,6 +75,5 @@ export default class Categories extends Component {
           </div>
         </div>
       </>
-    )
-  }
+  )
 }

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Footer.css'
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <>
+
+export default function Footer() {
+  return (
+    <>
             <section className="vtm-footer">
                 <div className="vtm-footer-container">
 
@@ -80,6 +80,5 @@ export default class Footer extends Component {
                 </div>
             </section>
       </>
-    )
-  }
+  )
 }

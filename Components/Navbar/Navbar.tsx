@@ -7,10 +7,10 @@ import hamburger from '/public/Images/hamburger.svg'
 import profileIcon from '/public/Images/profileicon.svg'
 import './Navbar.css'
 
-export default class Navbar extends Component {
-  render() {
-    return (
-      <>
+
+export default function Navbar() {
+  return (
+    <>
        <section className="nav-section">
             <div className="nav-container">
 
@@ -92,6 +92,5 @@ export default class Navbar extends Component {
             </div>
        </section>
       </>
-    )
-  }
+  )
 }

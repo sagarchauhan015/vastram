@@ -10,7 +10,7 @@ export default function page() {
   return (
     <>
       <Navbar />
-      <BlogCard />
+      {/* <BlogCard /> */}
       <NewArrivals />
       <Categories />
       <Footer />

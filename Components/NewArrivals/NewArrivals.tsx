@@ -1,56 +1,52 @@
-import React, { Component } from 'react'
-import {Splide, SplideTrack, SplideSlide} from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+"use client"
+import React, { Component, useCallback } from 'react'
 import ProductCard from '../ProductCard/ProductCard'
+import EmblaCarousel from '../../libs/EmblaCarousel/EmblaCarousel'
+import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react'
+
+
 import './NewArrivals.css'
 
-interface props{
-  
-}
-interface state{
 
-}
+const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: 'auto', containScroll: 'trimSnaps' }
+const SLIDE_COUNT = 10
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function NewArrivals() {
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
+  
   return (
     <>
         <div className="na-container">
-            <div className="na-heading">
-                New Arrivals
+
+            <div className="na-header">
+              <div className="na-heading">
+                  New Arrivals
+              </div>
+              <div className="carousel-btn">
+                <div className="carousel-left" onClick={scrollPrev}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="currentColor" d="M228 128a12 12 0 0 1-12 12H69l51.52 51.51a12 12 0 0 1-17 17l-72-72a12 12 0 0 1 0-17l72-72a12 12 0 0 1 17 17L69 116h147a12 12 0 0 1 12 12Z"/></svg>
+                </div>
+                <div className="carousel-right" onClick={scrollNext}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><g transform="translate(256 0) scale(-1 1)"><path fill="currentColor" d="M228 128a12 12 0 0 1-12 12H69l51.52 51.51a12 12 0 0 1-17 17l-72-72a12 12 0 0 1 0-17l72-72a12 12 0 0 1 17 17L69 116h147a12 12 0 0 1 12 12Z"/></g></svg>
+                </div>
+              </div>
             </div>
-            <Splide hasTrack={ false }>
-              <SplideTrack>
-                <SplideSlide>
-                  <div className="na-card-container">
-                      <ProductCard />
-                      <ProductCard />
-                      <ProductCard />
-                      <ProductCard />
-                  </div>
-                </SplideSlide>
-                <SplideSlide>
-                  <div className="na-card-container">
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                    </div>
-                </SplideSlide>
-                <SplideSlide>
-                  <div className="na-card-container">
-                      <ProductCard />
-                      <ProductCard />
-                      <ProductCard />
-                      <ProductCard />
-                  </div>
-                </SplideSlide>
-              </SplideTrack>
-            </Splide>
+
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} slideCard={<ProductCard/>} emblaRef = {emblaRef} />
+
+
         </div>
-
-        
-
-
       </>
   )
 }

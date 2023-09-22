@@ -2,10 +2,16 @@
     width: 90%;
     margin: 2rem auto;
 }
+.na-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+}
 .na-heading{
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 2rem;
 }
 .na-card-container{
     display: flex;
@@ -14,3 +20,36 @@
     flex-wrap: wrap;
     margin: 1rem 0rem 3rem;
 }
+.carousel-btn{
+    display: flex;
+    align-items: center;
+}
+.carousel-left, .carousel-right{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--black5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.carousel-right{
+    margin-left: 1rem;
+}
+.carousel-left:hover, .carousel-right:hover{
+    background-color: var(--black1);
+    color: var(--white1);
+}
+.embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+  

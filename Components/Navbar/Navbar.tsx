@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import searchIcon from '/public/Images/searchicon.svg'
 import wishIcon from '/public/Images/wishlisticon.svg'
 import cartIcon from '/public/Images/carticon.svg'
@@ -35,14 +37,18 @@ export default function Navbar() {
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <div className="nav-link">
-                                KIDS
-                            </div>
+                            <Link href="app/pages/productPage">
+                                <div className="nav-link">
+                                    KIDS
+                                </div>
+                            </Link>
                         </div>
                         <div className="nav-link-wrapper">
-                            <div className="nav-link">
-                                BLOGS
-                            </div>
+                            <a href="#blog-section">
+                                <div className="nav-link">
+                                    BLOGS
+                                </div>
+                            </a>
                         </div>
                     </div>
 

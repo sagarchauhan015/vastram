@@ -24,7 +24,7 @@ export default function Blog() {
   
   return (
     <>
-        <div className="blg-container">
+        <div id='blog-section' className="blg-container">
 
             <div className="blg-header">
             <div className="blg-heading">

@@ -2,6 +2,10 @@
     width: 100%;
     box-shadow: var(--bs6);
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: var(--white1);
 }
 .nav-container{
     width: 90%;

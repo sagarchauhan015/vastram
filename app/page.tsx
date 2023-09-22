@@ -4,6 +4,7 @@ import Categories from '@/Components/Categories/Categories'
 import Footer from '@/Components/Footer/Footer'
 import BlogCard from '@/Components/BlogCard/BlogCard'
 import NewArrivals from '@/Components/NewArrivals/NewArrivals'
+import Blog from '@/Components/Blog/Blog'
 
 
 export default function page() {
@@ -13,6 +14,7 @@ export default function page() {
       {/* <BlogCard /> */}
       <NewArrivals />
       <Categories />
+      <Blog />
       <Footer />
     </>
   )

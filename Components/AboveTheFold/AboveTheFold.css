@@ -1,0 +1,50 @@
+.atf-container{
+    width: 90%;
+    margin: 1rem auto 0rem;
+}
+.atf-wrapper{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.video-text{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+.video-text video{
+    width: 100%;
+    height: 100%;
+}
+.video-text-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    mix-blend-mode: screen;
+}
+.atf-scroll{
+    text-align: center;
+}
+.atf-scroll-text{
+    font-size: 0.9rem;
+}
+.atf-img{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

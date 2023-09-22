@@ -16,7 +16,13 @@ a{
     --black5: #D8D9DA;
 
     --white1: #ffffff;
+
     --cream1: #FFF6E0;
+
+    --grey1: #bbbbbb;
+    --grey2: #cccccc;
+    --grey3: #dddddd;
+    --grey4: #eeeeee;
 
     --bs1: box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     --bs2: box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

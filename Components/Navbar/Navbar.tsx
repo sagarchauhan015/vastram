@@ -21,15 +21,19 @@ export default function Navbar() {
                     <div className="nav-hamburger">
                         <Image src={hamburger} alt='searchicon' width={20} height={20}></Image>
                     </div>
-                    <div className="nav-logo">
-                        VASTRAM.
-                    </div>
+                    <Link href={"/"}>
+                        <div className="nav-logo">
+                            VASTRAM.
+                        </div>
+                    </Link>
 
                     <div className="nav-links">
                         <div className="nav-link-wrapper">
-                            <div className="nav-link">
-                                MEN
-                            </div>
+                            <Link href="/pages/category">
+                                <div className="nav-link">
+                                    MEN
+                                </div>
+                            </Link>
                         </div>
                         <div className="nav-link-wrapper">
                             <div className="nav-link">
@@ -37,18 +41,18 @@ export default function Navbar() {
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <Link href="app/pages/productPage">
+                            <Link href="/pages/cart">
                                 <div className="nav-link">
                                     KIDS
                                 </div>
                             </Link>
                         </div>
                         <div className="nav-link-wrapper">
-                            <a href="#blog-section">
+                            <Link href="/#blog-section">
                                 <div className="nav-link">
                                     BLOGS
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

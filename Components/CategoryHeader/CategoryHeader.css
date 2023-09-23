@@ -1,0 +1,21 @@
+.ctg-container{
+    width: 100%;
+    margin-top: 4.4rem;
+}
+.ctg-heading-wrapper{
+    width: 90%;
+    margin: auto;
+}
+.ctg-heading{
+    margin: 2rem 0rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+.ctg-route, .ctg-route-link{
+    color: var(--black3);
+
+}
+.ctg-route-link:hover{
+    color: var(--black1);
+}

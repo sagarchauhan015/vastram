@@ -72,6 +72,7 @@ export default function Categories() {
             </div>
 
             </div>
+          <div className="" id='blog-section'></div>
           </div>
         </div>
       </>

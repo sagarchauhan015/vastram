@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import './AboveTheFold.css'
-import atfImg from '/public/Images/atfImage.png'
+import atfImg from '/public/Images/VASTRAM.png'
 
 
 export default function AboveTheFold() {

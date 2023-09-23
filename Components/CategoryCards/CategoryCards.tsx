@@ -2,6 +2,7 @@ import React from 'react'
 
 import ProductCard from '../ProductCard/ProductCard'
 import './CategoryCards.css'
+import Filter from '../Filter/Filter'
 
 export default function CategoryCards() {
   return (
@@ -9,7 +10,7 @@ export default function CategoryCards() {
         <div className="cc-container">
             <div className="cc-wrapper">
                 <div className="cc-left">
-                    Filters
+                    <Filter />
                 </div>
                 <div className="cc-right">
                     <div className="cc-right-header">

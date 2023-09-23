@@ -1,21 +1,27 @@
 .ctg-container{
     width: 100%;
-    margin-top: 4.4rem;
+    margin-top: 4rem;
+    padding: 1rem 0rem;
+    background-color: var(--black2);
+    color: var(--white1);
 }
 .ctg-heading-wrapper{
     width: 90%;
     margin: auto;
 }
 .ctg-heading{
-    margin: 2rem 0rem;
+    margin: 1rem 0rem 0rem;
     font-size: 2.5rem;
     text-align: center;
     font-weight: 600;
 }
+.ctg-route{
+    text-align: center;
+}
 .ctg-route, .ctg-route-link{
-    color: var(--black3);
+    color: var(--grey1);
 
 }
 .ctg-route-link:hover{
-    color: var(--black1);
+    color: var(--white1);
 }

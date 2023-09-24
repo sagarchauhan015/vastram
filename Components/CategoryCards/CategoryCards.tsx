@@ -18,7 +18,7 @@ export default function CategoryCards() {
                             <span className='cc-product-category'>Menswear</span><span className='cc-product-quantity'>(215 products)</span>
                         </div>
                         <div className="cc-header-right">
-                            Sort By: 
+                            {/* Sort By:  */}
                         </div>
                     </div>
                     <div className="cc-right-cards">

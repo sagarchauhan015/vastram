@@ -29,7 +29,7 @@ export default function Navbar() {
 
                     <div className="nav-links">
                         <div className="nav-link-wrapper">
-                            <Link href="/pages/category">
+                            <Link href="/category/men/tshirt">
                                 <div className="nav-link">
                                     MEN
                                 </div>

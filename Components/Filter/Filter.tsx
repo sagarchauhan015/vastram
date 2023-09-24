@@ -13,8 +13,10 @@ function valuetext(value: number) {
 }
 const minDistance = 10;
 
+
 export default function Filter() {
     const [value1, setValue1] = React.useState<number[]>([500, 4000]);
+
 
     const handleChange1 = (
         event: Event,
@@ -32,6 +34,7 @@ export default function Filter() {
         }
     };
 
+
   return (
     <>
         <div className="filter-container">
@@ -46,11 +49,11 @@ export default function Filter() {
                     </div>
                     <div className="filter-items">
                         <div className="filter-item">
-                            <input type="checkbox" name="" id="" />
+                            <input type="checkbox" name="shirt" id="" onClick={(e)=>{console.log(e.target)}} />
                             <label htmlFor="">Shirts</label>
                         </div>
                         <div className="filter-item">
-                            <input type="checkbox" name="" id="" />
+                            <input type="checkbox" name="tshirt" id="" onClick={(e)=>{console.log(e.target)}} />
                             <label htmlFor="">T-Shirts</label>
                         </div>
                         <div className="filter-item">

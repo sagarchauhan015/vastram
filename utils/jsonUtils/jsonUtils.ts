@@ -25,6 +25,17 @@ export const jsonUtils = {
             jsonArray.push(data[values].toJson());
         }
         return jsonArray;
+    },
+
+    isEmpty(data : any) {
+        if (Object.keys(data).length === 0) {
+            return true;
+        }
+        return false;
+    },
+
+    toString(json : any) {
+        return JSON.stringify(json);
     }
 
 };

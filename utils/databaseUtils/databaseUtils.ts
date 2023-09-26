@@ -1,19 +1,20 @@
 import { Sequelize } from "sequelize";
-import env_values from '../../config'
-
-console.log(env_values.db.name);
+import mysql2 from 'mysql2';
+import config from "@/config";
 
 export const sequelize = new Sequelize(
-    env_values.db.name, // Database Name
-    env_values.db.username,       // Database Username
-    env_values.db.password,  // Database Passowrd
+    config.db.name,        // Database Name
+    config.db.username,    // Database Username
+    config.db.password,    // Database Passowrd
     {
         dialect: 'mysql',
-        host: env_values.db.host
+        dialectModule: mysql2,
+        host: config.db.host,
+        port: config.app.port
     }
 );
 
-async function intializeConnection() {
+export async function intializeConnection() {
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
@@ -21,5 +22,3 @@ async function intializeConnection() {
         console.error('Unable to connect to the database:', error);
     }
 }
-
-intializeConnection();

@@ -2,7 +2,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const env = process.env.NODE_ENV;
+const env_dev = process.env.DEV_NEXT_ENV;
 
 const dev = {
  app: {
@@ -30,4 +30,4 @@ const config = {
     dev
 };
    
-module.exports = config[env];
+module.exports = config[env_dev];

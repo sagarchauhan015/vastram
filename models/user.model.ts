@@ -23,26 +23,6 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING(50),
         allowNull: true
     },
-    email: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    },
-    image: {
-        type: DataTypes.STRING(255),
-        allowNull: true
-    },
-    loginFrom: {
-        type: DataTypes.STRING(100),
-        allowNull: false
-    },
-    googleId: {
-        type: DataTypes.STRING(100),
-        allowNull: true
-    },
-    subscriptionType: {
-        type: DataTypes.STRING(100),
-        allowNull: false
-    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
 })

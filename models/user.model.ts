@@ -23,9 +23,20 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING(50),
         allowNull: true
     },
+    email: {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+    },
+    lastLogin: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false,
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
+    
 })
-
-// To sync the table (If table is not in DB, it will create the table)
-sequelize.sync();

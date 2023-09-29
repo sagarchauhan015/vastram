@@ -101,9 +101,10 @@ function uploadProduct(){
     let data = {
         "productName": "Blue Checked Shirt",
         "description": "Cotton blue colored shirt made with 10% elastane",
-        "price": 1200,
+        "price": 4200,
         "imgUrl" : "http://blue/shirt.png",
-        "category": "shirt"
+        "category": "shirt",
+        "size" : ["xl", "m"]
       }
     const result = adminFunctions.uploadProduct(data);
 }

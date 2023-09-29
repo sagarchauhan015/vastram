@@ -1,0 +1,28 @@
+.admin-container{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admin-form{
+    margin: 2rem auto;
+}
+.admin-form-heading{
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.admin-form-label{
+    display: block;
+    margin-bottom: .5rem;
+}
+.input-box-label{
+    margin-bottom: 1rem;
+}
+.admin-form-inputs{
+    columns: 50% 2;
+}
+.admin-size-check{
+    margin: 0 2rem 0 .3rem;
+}

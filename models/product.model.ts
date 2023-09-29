@@ -19,7 +19,7 @@ export const Product = sequelize.define('Product', {
         allowNull: false
     },
     price: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
     imgUrl: {

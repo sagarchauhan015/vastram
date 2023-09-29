@@ -41,7 +41,7 @@ export default function Navbar() {
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <Link href="/pages/cart">
+                            <Link href="/cart">
                                 <div className="nav-link">
                                     KIDS
                                 </div>

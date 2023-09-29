@@ -7,6 +7,7 @@ const env_dev = process.env.DEV_NEXT_ENV;
 const dev = {
  app: {
    port: parseInt(process.env.DEV_APP_PORT),
+   url: process.env.DEV_APP_URL,
    JWT_SECRET_KEY : process.env.DEV_JWT_SECRET_KEY
  },
  db: {

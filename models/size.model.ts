@@ -1,13 +1,10 @@
-import { sequelize } from "@/utils/databaseUtils/databaseUtils";
 import { DataTypes } from "sequelize";
 
-export const Filter = sequelize.define('Filter', {
+import { sequelize } from "@/utils/databaseUtils/databaseUtils";
+
+export const Size = sequelize.define('Size',{
     productId: {
         type: DataTypes.UUID,
-        allowNull: false,
-    },
-    color: {
-        type: DataTypes.STRING(50),
         allowNull: false
     },
     size: {

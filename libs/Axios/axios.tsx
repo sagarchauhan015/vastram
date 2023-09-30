@@ -8,7 +8,7 @@ const instance = axios.create({
 });
 
 
-export default async function axiosCall(URL : string, method : string, params=null, headers = null, payload=null){
+export default async function axiosCall(URL : string, method : string, params=null, headers = null, payload=null):Promise<any>{
     let response;
     let configJson : any = {}
     let headersJson = {};

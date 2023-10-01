@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import DropDownMenu from '@/libs/MUI/DropDownMenu/DropDownMenu'
 import searchIcon from '/public/Images/searchicon.svg'
 import wishIcon from '/public/Images/wishlisticon.svg'
 import cartIcon from '/public/Images/carticon.svg'
@@ -10,7 +11,7 @@ import profileIcon from '/public/Images/profileicon.svg'
 import './Navbar.css'
 
 
-export default function Navbar() {
+export default function Navbar(props : any) {
   return (
     <>
        <section className="nav-section">
@@ -29,23 +30,34 @@ export default function Navbar() {
 
                     <div className="nav-links">
                         <div className="nav-link-wrapper">
-                            <Link href="/category/men/tshirt">
+                            <Link href="/category/men">
                                 <div className="nav-link">
                                     MEN
                                 </div>
                             </Link>
-                        </div>
-                        <div className="nav-link-wrapper">
-                            <div className="nav-link">
-                                WOMEN
+                            <div className="nav-dropdown-menu">
+                                <DropDownMenu menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <Link href="/cart">
+                            <Link href="/category/women">
+                                <div className="nav-link">
+                                    WOMEN
+                                </div>
+                            </Link>
+                            <div className="nav-dropdown-menu">
+                                <DropDownMenu menuItemList={['Suits', 'Tops', 'Jeans', 'Shrugs', 'Skirts']} />
+                            </div>
+                        </div>
+                        <div className="nav-link-wrapper">
+                            <Link href="/category/kids">
                                 <div className="nav-link">
                                     KIDS
                                 </div>
                             </Link>
+                            <div className="nav-dropdown-menu">
+                                <DropDownMenu menuItemList={['Shorts', 'Jeans', 'T-shirts', 'Capris']} />
+                            </div>
                         </div>
                         <div className="nav-link-wrapper">
                             <Link href="/#blog-section">

@@ -1,0 +1,9 @@
+.cust-menu-item{
+    transition: all .3s linear;
+    color: var(--black1);
+    font-family: var(--font-quick-sand) !important;
+}
+.cust-menu-item:hover{
+    color: var(--white1);
+    background-color: var(--black3);
+}

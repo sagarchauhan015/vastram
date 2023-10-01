@@ -5,9 +5,9 @@ import { Size } from "@/models/size.model";
 
 
 // Define the association
-Product.hasMany(Size, { foreignKey: 'productId' });
+Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
 // You can also define the reverse association if needed
-Size.belongsTo(Product, { foreignKey: 'productId' });
+Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
 
 
 // Build connection with database

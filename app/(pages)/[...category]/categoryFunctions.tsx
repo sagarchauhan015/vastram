@@ -1,12 +1,10 @@
 import axiosCall from "@/libs/Axios/axios";
 
-export const adminFunctions = {
+export const categoryFunctions = {
 
-    async uploadProduct(dataJson: any){
+    async getProductByCategory(dataJson: any){
         try{
-            const payload = dataJson;
-            let result = await axiosCall('/api/admin', 'POST', null, null, payload);
-            console.log("this is admin panel", result);
+            let result = await axiosCall(`/api/category/${dataJson.category}`, 'GET', null, null, null);
             return result.data;
 
         }catch (error) {

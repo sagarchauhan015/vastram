@@ -11,6 +11,7 @@ interface productDetailsInterface{
   price: number,
   imgUrl: string,
   category: string,
+  subCategory: string,
   size: Array<string>
 }
 
@@ -23,6 +24,7 @@ export default function admin() {
     price: 0,
     imgUrl: "",
     category: "",
+    subCategory: "",
     size: [],
   });
 
@@ -44,13 +46,14 @@ export default function admin() {
       
     }
 
-    async function uploadProduct(){
+    async function uploadProduct(e:any){
+      e.preventDefault();
       const result = await adminFunctions.uploadProduct(productDetails);
   
-      if(stringUtils.isUndefined(result) === true){
+      if(result.isSuccess === true){
         alert('Product Uploaded Successfully !');
       }
-  }
+    }
 
   return (
     <>
@@ -74,6 +77,10 @@ export default function admin() {
                   <div className="admin-input-field">
                     <label className='admin-form-label'>Category</label>
                     <input onChange={(e)=>{handleInputChange(e)}} type="text" name="category" id="" className='admin-input-box'/>
+                  </div>
+                  <div className="admin-input-field">
+                    <label className='admin-form-label'>Sub Category</label>
+                    <input onChange={(e)=>{handleInputChange(e)}} type="text" name="subCategory" id="" className='admin-input-box'/>
                   </div>
                   <div className="admin-input-field">
                       <label className='admin-form-label'>Product Sizes</label>

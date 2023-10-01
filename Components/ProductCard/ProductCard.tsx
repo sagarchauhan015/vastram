@@ -11,7 +11,7 @@ export default function ProductCard() {
         <div className="pc-container">
 
             <div className="pc-img">
-                <Image className='pc-image' src={shirtImg} alt='product-image' width={300} height={250}></Image>
+                <Image className='pc-image' src={shirtImg} alt='product-image' width={1000} height={1000}></Image>
             </div>
 
             <div className="pc-product-name">

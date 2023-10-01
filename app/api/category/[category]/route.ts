@@ -1,6 +1,7 @@
 import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
 
 import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
 import { sequelize } from '@/utils/databaseUtils/databaseUtils';
@@ -16,24 +17,32 @@ intializeConnection();
 // To sync the table (If table is not in DB, it will create the table)
 sequelize.sync();
 
-export async function POST(request : any){
+export async function GET(request : any, {params} : any){
     try {
-        const data = await request.json();
-        const product = await Product.create(data);
-        const sizeData = data.size.map((sizeValue: any) => ({
-          productId: product.get('Id'),
-          size: sizeValue,
-        }));
-    
-        // Use bulkCreate to insert multiple size entries
-        await Size.bulkCreate(sizeData);
+        let whereJson = {
+          category : params.category
+        }
+        let queryJson = {
+          where: whereJson,
+          include: [
+            {
+              model: Size,
+              as: 'sizes',
+              required: false, // This ensures a LEFT JOIN
+            }
+          ]
+        }
+        const items = await Product.findAll(queryJson);
+        
+        let dataArray = jsonUtils.convertArrayofModeltoDataArray(items);
+
         let response = {
             isSuccess: true,
-            status: 201
+            data : dataArray,
+            status: 200
         }
         return NextResponse.json(response)
       } catch (error) {
         return { isSuccess: false, error: error };
       }
 }
-

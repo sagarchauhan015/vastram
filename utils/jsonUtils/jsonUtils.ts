@@ -27,6 +27,16 @@ export const jsonUtils = {
         return jsonArray;
     },
 
+    convertArrayofModeltoDataArray(data : any){
+        if(stringUtils.isUndefinedEmptyOrNull(data)) return undefined;
+
+        let dataArray = []
+        for(let values in data){
+            dataArray.push(data[values].dataValues);
+        }
+        return dataArray;
+    },
+
     isEmpty(data : any) {
         if (Object.keys(data).length === 0) {
             return true;

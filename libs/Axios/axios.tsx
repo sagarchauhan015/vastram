@@ -17,11 +17,11 @@ export default async function axiosCall(URL : string, method : string, params=nu
         configJson['params'] = params;
     }
 
-    if (localStorage.getItem('token')) {
-        headersJson = {
-            'x-auth-token': localStorage.getItem('token')
-        }
-    }
+    // if (localStorage.getItem('token')) {
+    //     headersJson = {
+    //         'x-auth-token': localStorage.getItem('token')
+    //     }
+    // }
 
     if (headers !== null && !jsonUtils.isEmpty(headers)) {
         headersJson = headers['headers']

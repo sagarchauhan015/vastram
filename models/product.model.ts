@@ -30,6 +30,10 @@ export const Product = sequelize.define('Product', {
         type: DataTypes.STRING(50),
         allowNull: false
     },
+    subCategory: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     

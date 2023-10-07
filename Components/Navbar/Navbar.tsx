@@ -36,7 +36,7 @@ export default function Navbar(props : any) {
                                 </div>
                             </Link>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
+                                <DropDownMenu menuItemList={['shirt', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">

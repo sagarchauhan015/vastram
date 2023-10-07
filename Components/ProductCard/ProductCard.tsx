@@ -5,26 +5,26 @@ import shirtImg from '/public/Images/shirt2.png'
 
 import './ProductCard.css'
 
-export default function ProductCard() {
+export default function ProductCard(props: any) {
   return (
     <>
         <div className="pc-container">
 
             <div className="pc-img">
-                <Image className='pc-image' src={shirtImg} alt='product-image' width={1000} height={1000}></Image>
+                <Image className='pc-image' src={props.cardDetail?.imgUrl} alt='product-image' width={1000} height={1000}></Image>
             </div>
 
             <div className="pc-product-name">
-                Blue Printed Shirt
+                {props.cardDetail?.productName}
             </div>
 
             <div className="pc-product-des">
-                Mens Cotton Shirt with Leaf Design printed on Blue shirt with egnormic design
+                {props.cardDetail?.description}
             </div>
 
             <div className="pc-product-action">
                 <div className="pc-product-price">
-                    ₹ 699/-
+                    ₹ {props.cardDetail?.price}/-
                 </div>
                 <div className="pc-wishlist">
                     <Image className='pc-wishlist-img' src={wishIcon} alt='searchicon' width={22} height={22}></Image>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
@@ -23,7 +22,7 @@ export default function DropDownMenu(props : props) {
                 {
                     props.menuItemList.map((listItemName) => {
                         return(
-                            <Link href={`/category/men/${listItemName}`}>
+                            <Link href={`/category/men?subcategory=${listItemName}`}>
                                 <MenuItem className='cust-menu-item'>
                                     <ListItemText>{listItemName}</ListItemText>
                                 </MenuItem>

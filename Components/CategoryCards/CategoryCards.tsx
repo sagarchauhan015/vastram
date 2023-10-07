@@ -4,13 +4,13 @@ import ProductCard from '../ProductCard/ProductCard'
 import './CategoryCards.css'
 import Filter from '../Filter/Filter'
 
-export default function CategoryCards() {
+export default function CategoryCards(props: any) {
   return (
     <>
         <div className="cc-container">
             <div className="cc-wrapper">
                 <div className="cc-left">
-                    <Filter />
+                    <Filter category={props.category} />
                 </div>
                 <div className="cc-right">
                     <div className="cc-right-header">
@@ -22,42 +22,22 @@ export default function CategoryCards() {
                         </div>
                     </div>
                     <div className="cc-right-cards">
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
-                        <div className="cc-product-card-wrapper">
-                            <ProductCard />
-                        </div>
+                        {
+                            props.cardData?.length > 0 ?
+                            <> 
+                            {
+                                props.cardData.map((cardDetial : any)=>{
+                                    return(
+                                        <div className="cc-product-card-wrapper">
+                                            <ProductCard cardDetail = {cardDetial} />
+                                        </div>
+                                    )
+                                })
+                            }
+                            </>
+                            :
+                            <>No Avialiable data</>
+                        }
                     </div>
                 </div>
             </div>

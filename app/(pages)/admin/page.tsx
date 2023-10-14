@@ -29,7 +29,6 @@ export default function admin() {
   });
 
     async function handleInputChange(e : any) {
-      // e.preventDefault();
       let name : keyof productDetailsInterface = e.target.name;
       let value = e.target.value;
       if (name === "size") {

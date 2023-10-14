@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
 
 import './Filter.css'
-import { categoryFunctions } from '@/app/(pages)/[...category]/categoryFunctions';
+import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions';
 
 interface filterTypes{
     category: Array<string>,
@@ -78,8 +78,6 @@ export default function Filter(props: any) {
                     Filters
                 </div>
                 <div className="filter-wrapper">
-
-                    
                     <div className="filter-type">
                         <div className="filter-type-heading">
                             Categories

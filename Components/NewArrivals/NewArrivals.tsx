@@ -1,19 +1,36 @@
 "use client"
-import React, { Component, useCallback } from 'react'
-import ProductCard from '../ProductCard/ProductCard'
+import React, {useState, useCallback, useEffect } from 'react'
 import EmblaCarousel from '../../libs/EmblaCarousel/EmblaCarousel'
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react'
+import { homeFunctions } from '@/app/homeFunctions'
 
 
 import './NewArrivals.css'
 
 
 const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: 'auto', containScroll: 'trimSnaps' }
-const SLIDE_COUNT = 10
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
 
 export default function NewArrivals() {
+  const [newArrivals, setNewArrivals] = useState();
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          const result = await homeFunctions.getNewArrivals();
+          await setNewArrivals(result);
+          console.log(newArrivals);
+      } catch (error) {
+          console.error("Error fetching data:", error);
+      }
+    }
+  
+    fetchData();
+    
+  }, []);
 
+  const SLIDE_COUNT = 12
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
 
   const scrollPrev = useCallback(() => {
@@ -43,7 +60,7 @@ export default function NewArrivals() {
               </div>
             </div>
 
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} slideCard={<ProductCard/>} emblaRef = {emblaRef} />
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} slideCard={'ProductCard'} emblaRef = {emblaRef} cardData={newArrivals} />
 
 
         </div>

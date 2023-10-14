@@ -1,3 +1,4 @@
+'use client'
 import React, { Component } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,33 +31,33 @@ export default function Navbar(props : any) {
 
                     <div className="nav-links">
                         <div className="nav-link-wrapper">
-                            <Link href="/category/men">
+                            <Link href="/men?category=men" onClick={(e)=>props.getProductByCategory(e, props.category)}>
                                 <div className="nav-link">
                                     MEN
                                 </div>
                             </Link>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu menuItemList={['shirt', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
+                                <DropDownMenu category={'men'} menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <Link href="/category/women">
+                            <Link href="/women?category=women" onClick={(e)=>props.getProductByCategory(e, props.category)}>
                                 <div className="nav-link">
                                     WOMEN
                                 </div>
                             </Link>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu menuItemList={['Suits', 'Tops', 'Jeans', 'Shrugs', 'Skirts']} />
+                                <DropDownMenu category={'women'} menuItemList={['Suits', 'Tops', 'Jeans', 'Shrugs', 'Skirts']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <Link href="/category/kids">
+                            <Link href="/kids?category=kids">
                                 <div className="nav-link">
                                     KIDS
                                 </div>
                             </Link>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu menuItemList={['Shorts', 'Jeans', 'T-shirts', 'Capris']} />
+                                <DropDownMenu category={'kids'} menuItemList={['Shorts', 'Jeans', 'T-shirts', 'Capris']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">

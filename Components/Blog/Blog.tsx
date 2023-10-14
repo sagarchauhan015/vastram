@@ -8,7 +8,7 @@ import './Blog.css'
 
 
 const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: 'auto', containScroll: 'trimSnaps' }
-const SLIDE_COUNT = 10
+const SLIDE_COUNT = 8
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Blog() {
@@ -40,7 +40,7 @@ export default function Blog() {
             </div>
             </div>
 
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} slideCard={<BlogCard/>} emblaRef = {emblaRef} />
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} slideCard={'BlogCard'} emblaRef = {emblaRef} cardData={undefined} />
 
 
         </div>

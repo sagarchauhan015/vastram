@@ -5,7 +5,7 @@ export const categoryFunctions = {
     async getProductByCategory(dataJson: any){
         try{
             let result = await axiosCall(`/api/category/${dataJson.category}`, 'GET', null, null, null);
-            return result.data;
+            return result.data.data;
 
         }catch (error) {
             let errorResponse = {

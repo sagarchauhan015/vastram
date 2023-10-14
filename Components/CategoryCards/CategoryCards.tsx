@@ -3,8 +3,15 @@ import React from 'react'
 import ProductCard from '../ProductCard/ProductCard'
 import './CategoryCards.css'
 import Filter from '../Filter/Filter'
+import Link from 'next/link'
 
-export default function CategoryCards(props: any) {
+interface propsType{
+    cardData: any,
+    category: string,
+}
+
+export default function CategoryCards(props: propsType) {
+    console.log(props.cardData);
   return (
     <>
         <div className="cc-container">
@@ -15,7 +22,7 @@ export default function CategoryCards(props: any) {
                 <div className="cc-right">
                     <div className="cc-right-header">
                         <div className="cc-header-left">
-                            <span className='cc-product-category'>Menswear</span><span className='cc-product-quantity'>(215 products)</span>
+                            <span className='cc-product-category'>{props.category} wear</span><span className='cc-product-quantity'>({props.cardData?.length} products)</span>
                         </div>
                         <div className="cc-header-right">
                             {/* Sort By:  */}
@@ -28,15 +35,18 @@ export default function CategoryCards(props: any) {
                             {
                                 props.cardData.map((cardDetial : any)=>{
                                     return(
-                                        <div className="cc-product-card-wrapper">
-                                            <ProductCard cardDetail = {cardDetial} />
-                                        </div>
+                                        // /product?productId=${cardDetial.Id} change it later after the DB works,
+                                        <Link href={`/product`}>
+                                            <div className="cc-product-card-wrapper">
+                                                <ProductCard cardDetail = {cardDetial} />
+                                            </div>
+                                        </Link>
                                     )
                                 })
                             }
                             </>
                             :
-                            <>No Avialiable data</>
+                            <>No Avialiable Products</>
                         }
                     </div>
                 </div>

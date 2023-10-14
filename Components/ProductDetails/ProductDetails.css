@@ -1,0 +1,39 @@
+.pd-container{
+    width: 90%;
+    margin: 5rem auto 0rem;
+}
+.pd-route{
+    padding-top: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.pd-route, .pd-route-link{
+    color: var(--black3);
+
+}
+.pd-route-link:hover{
+    color: var(--black1);
+}
+.pd-carret-icon{
+    width: 18px;
+    height: 18px;
+    margin-top: .2rem;
+    color: var(--black1);
+}
+.pd-img-detail{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.pd-img{
+    width: 50%;
+    padding: 1rem 2rem;
+}
+.pd-detail{
+    width: 50%;
+}
+.pd-product-image{
+    width: auto;
+    height: 80vh;
+}

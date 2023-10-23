@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "sequelize": "^6.33.0",
     "typescript": "5.2.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zustand": "^4.4.3"
   }
 }

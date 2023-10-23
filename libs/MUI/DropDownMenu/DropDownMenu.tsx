@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
@@ -5,11 +6,11 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 
 import './DropDownMenu.css'
-import Link from 'next/link';
 
 interface props{
     menuItemList : Array<string>,
-    category: string
+    category: string,
+    getProductBySubCategory: any
 }
 
 export default function DropDownMenu(props : props) {
@@ -22,11 +23,9 @@ export default function DropDownMenu(props : props) {
                 {
                     props.menuItemList.map((listItemName) => {
                         return(
-                            <Link href={`/men?category=${props.category}&subcategory=${listItemName}`}  >
-                                <MenuItem className='cust-menu-item'>
+                                <MenuItem className='cust-menu-item' onClick={(e)=> props.getProductBySubCategory(e, listItemName) }>
                                     <ListItemText>{listItemName}</ListItemText>
                                 </MenuItem>
-                            </Link>
                         )
                     })
                 }

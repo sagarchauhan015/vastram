@@ -22,7 +22,7 @@ export default function CategoryHeader(props : propTypes) {
                 <div className="ctg-route">
                     <Link className='ctg-route-link' href={"/"}>Home </Link>
                     <Image className='ctg-carret-icon' src={carretIcon} width={1000} alt='carret'></Image>
-                    <Link className='ctg-route-link' href={"/"}>{props.category}</Link>
+                    <Link className='ctg-route-link' href={`/${props.category}?category=${props.category}`}>{props.category}</Link>
                     {
                         !stringUtils.isUndefinedEmptyOrNull(props.subcategory) ?
                         <>
@@ -30,7 +30,6 @@ export default function CategoryHeader(props : propTypes) {
                             <Link className='ctg-route-link' href={"/"}>{props?.subcategory}</Link>
                         </>
                         :
-
                         <></>
                     }
                 </div>

@@ -20,7 +20,7 @@ export const categoryFunctions = {
     async getProductBySubCategory(dataJson: any){
         try{
             let result = await axiosCall(`/api/category/${dataJson.category}/${dataJson.subcategory}`, 'GET', null, null, null);
-            return result.data;
+            return result.data.data;
 
         }catch (error) {
             let errorResponse = {

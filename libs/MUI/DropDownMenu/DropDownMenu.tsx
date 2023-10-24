@@ -23,7 +23,7 @@ export default function DropDownMenu(props : props) {
                 {
                     props.menuItemList.map((listItemName) => {
                         return(
-                                <MenuItem className='cust-menu-item' onClick={(e)=> props.getProductBySubCategory(e, listItemName) }>
+                                <MenuItem className='cust-menu-item' onClick={(e)=> props.getProductBySubCategory(e, props.category, listItemName) }>
                                     <ListItemText>{listItemName}</ListItemText>
                                 </MenuItem>
                         )

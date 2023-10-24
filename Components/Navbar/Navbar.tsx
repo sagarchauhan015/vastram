@@ -21,7 +21,8 @@ export default function Navbar(props : any) {
     const router = useRouter();
     const updateCardsArray = useCardsArray((state) => state.updateCards);
 
-    async function getProductByCategory(category: string){
+    async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
+        e.preventDefault();
         router.push(`/${category}?category=${category}`)
           let data = {
             category: category
@@ -30,14 +31,15 @@ export default function Navbar(props : any) {
           await updateCardsArray(result);
       }
     
-      async function getProductBySubCategory(e: Event, subCategory: string){
-        router.push(`/${props.category}?category=${props.category}&subcategory=${subCategory}`)
+      async function getProductBySubCategory(e: Event, category: string, subCategory: string){
+        router.push(`/${category}?category=${category}&subcategory=${subCategory}`)
         let data = {
-          category: props.searchParams.category,
-          subcategory: props.searchParams.subcategory
+          category: category,
+          subcategory: subCategory
         }
         const result = await categoryFunctions.getProductBySubCategory(data);
-        // await setCardsArray(result);
+        await updateCardsArray(result);
+
       }
   return (
     <>
@@ -57,23 +59,23 @@ export default function Navbar(props : any) {
 
                     <div className="nav-links">
                         <div className="nav-link-wrapper">
-                            <div onClick={()=> getProductByCategory('men')}>
+                            <div onClick={(e)=> getProductByCategory(e,'men')}>
                                 <div className="nav-link">
                                     MEN
                                 </div>
                             </div>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu getProductBySubCategory={props.getProductBySubCategory} category={'men'} menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
+                                <DropDownMenu getProductBySubCategory={getProductBySubCategory} category={'men'} menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">
-                            <div onClick={(e)=> router.push("/women?category=women")}>
+                            <div onClick={(e)=> getProductByCategory(e,'women')}>
                                 <div className="nav-link">
                                     WOMEN
                                 </div>
                             </div>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu getProductBySubCategory={props.getProductBySubCategory} category={'women'} menuItemList={['Suits', 'Tops', 'Jeans', 'Shrugs', 'Skirts']} />
+                                <DropDownMenu getProductBySubCategory={getProductBySubCategory} category={'women'} menuItemList={['Suits', 'Tops', 'Jeans', 'Shrugs', 'Skirts']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">

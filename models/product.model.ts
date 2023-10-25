@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-
+import { Size } from "./size.model";
 import { sequelize } from "@/utils/databaseUtils/databaseUtils";
 
 
@@ -38,3 +38,8 @@ export const Product = sequelize.define('Product', {
     updatedAt: DataTypes.DATE,
     
 })
+
+// Define the association
+Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
+// You can also define the reverse association if needed
+Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });

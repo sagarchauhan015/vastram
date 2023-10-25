@@ -22,7 +22,6 @@ export default function Navbar(props : any) {
     const updateCardsArray = useCardsArray((state) => state.updateCards);
 
     async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
-        e.preventDefault();
         router.push(`/${category}?category=${category}`)
           let data = {
             category: category

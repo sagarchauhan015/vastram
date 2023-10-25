@@ -6,9 +6,9 @@ import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
 import { sequelize } from '@/utils/databaseUtils/databaseUtils';
 
 // Define the association
-Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
-// You can also define the reverse association if needed
-Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
+// Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
+// // You can also define the reverse association if needed
+// Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
 
 
 // Build connection with database

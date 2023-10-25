@@ -15,7 +15,6 @@ interface propsType{
 
 export default function CategoryCards(props: propsType) {
     const cardData = useCardsArray((state)=> state.cards);
-    console.log(props.cardData);
   return (
     <>
         <div className="cc-container">

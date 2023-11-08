@@ -9,7 +9,6 @@ import Link from 'next/link'
 import useCardsArray from '@/store/store'
 
 interface propsType{
-    cardData: any,
     category: string,
 }
 

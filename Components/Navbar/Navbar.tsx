@@ -64,7 +64,7 @@ export default function Navbar(props : any) {
                                 </div>
                             </div>
                             <div className="nav-dropdown-menu">
-                                <DropDownMenu getProductBySubCategory={getProductBySubCategory} category={'men'} menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trouser', 'Joggers']} />
+                                <DropDownMenu getProductBySubCategory={getProductBySubCategory} category={'men'} menuItemList={['Shirts', 'T-shirts', 'Jeans', 'Trousers', 'Joggers']} />
                             </div>
                         </div>
                         <div className="nav-link-wrapper">

@@ -1,12 +1,14 @@
 "use client"
-import React, {useState} from 'react'
-
+import React, {FormEvent, ReactHTMLElement, useState} from 'react'
+import { useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
+import useCardsArray from '@/store/store';
+import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions';
 
 import './Filter.css'
-import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions';
+
 
 interface filterTypes{
     category: Array<string>,
@@ -23,9 +25,11 @@ const minDistance = 10;
 
 
 export default function Filter(props: any) {
+    const router = useRouter();
+    const updateCardsArray = useCardsArray((state) => state.updateCards);
     const [value1, setValue1] = useState<number[]>([500, 5000]);
     const [filters, setFilters] = useState<filterTypes>({
-        category: [props.category],
+        category: ['men'],
         subcategory: [],
         price: [],
         size: []
@@ -64,16 +68,20 @@ export default function Filter(props: any) {
         }))
     };
 
-    async function applyFilters(){
-        
+    async function applyFilters(e: FormEvent<HTMLFormElement>){
+        e.preventDefault();
+        router.push(`/${filters.category[0]}?category=${filters.category[0]}`)
         const result = await categoryFunctions.getProductByFilters(filters);
+        if(result.isSuccess){
+        await updateCardsArray(result.data);
+        }
         console.log(result);
     }
 
   return (
     <>
         <div className="filter-container">
-        <form action="" onSubmit={applyFilters}>
+        <form action="" onSubmit={(e)=> applyFilters(e)}>
                 <div className="filter-heading">
                     Filters
                 </div>
@@ -82,28 +90,58 @@ export default function Filter(props: any) {
                         <div className="filter-type-heading">
                             Categories
                         </div>
-                        <div className="filter-items">
-                            <div className="filter-item">
-                                <input type="checkbox" name="subcategory" id="shirt" onChange={(e)=>{onFilterChange(e)}} />
-                                <label htmlFor="">Shirts</label>
-                            </div>
-                            <div className="filter-item">
-                                <input type="checkbox" name="subcategory" id="tshirt" onChange={(e)=>{onFilterChange(e)}} />
-                                <label htmlFor="">T-Shirts</label>
-                            </div>
-                            <div className="filter-item">
-                                <input type="checkbox" name="subcategory" id="jeans" onChange={(e)=>{onFilterChange(e)}} />
-                                <label htmlFor="">Jeans</label>
-                            </div>
-                            <div className="filter-item">
-                                <input type="checkbox" name="subcategory" id="trouser" onChange={(e)=>{onFilterChange(e)}} />
-                                <label htmlFor="">Trousers</label>
-                            </div>
-                            <div className="filter-item">
-                                <input type="checkbox" name="subcategory" id="jogger" onChange={(e)=>{onFilterChange(e)}} />
-                                <label htmlFor="">Joggers</label>
-                            </div>
-                        </div>
+                        {
+                            {
+                                'men' : <>
+                                            <div className="filter-items">
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Shirts" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Shirts</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="T-shirts" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">T-Shirts</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Jeans" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Jeans</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Trousers" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Trousers</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Joggers" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Joggers</label>
+                                                </div>
+                                            </div>
+                                        </>,
+                                'women' : <>
+                                            <div className="filter-items">
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Shirts" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Suits</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="T-shirts" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Shrugs</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Jeans" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Jeans</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Trousers" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Skirts</label>
+                                                </div>
+                                                <div className="filter-item">
+                                                    <input type="checkbox" name="subcategory" id="Joggers" onChange={(e)=>{onFilterChange(e)}} />
+                                                    <label htmlFor="">Tops</label>
+                                                </div>
+                                            </div>
+                                        </>
+                            }[filters.category[0]]
+                        }
                     </div>
 
                     <div className="filter-type">

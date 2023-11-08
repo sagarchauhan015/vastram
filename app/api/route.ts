@@ -7,9 +7,9 @@ import { jsonUtils } from '@/utils/jsonUtils/jsonUtils';
 
 
 // Define the association
-Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
-// You can also define the reverse association if needed
-Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
+// Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
+// // You can also define the reverse association if needed
+// Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
 
 
 // Build connection with database

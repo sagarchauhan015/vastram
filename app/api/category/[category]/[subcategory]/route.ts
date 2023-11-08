@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
 import { NextResponse } from "next/server";

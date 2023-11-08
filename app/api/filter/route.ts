@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
 import { NextResponse } from "next/server";
@@ -7,9 +8,9 @@ import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
 import { sequelize } from '@/utils/databaseUtils/databaseUtils';
 
 // Define the association
-Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
-// You can also define the reverse association if needed
-Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
+// Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
+// // You can also define the reverse association if needed
+// Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
 
 
 // Build connection with database
@@ -21,8 +22,14 @@ export async function POST(request : any, {params} : any){
   try {
       const data = await request.json();
       let whereJson = {
-        category : params.category
-      }
+          category: data.category[0],
+          subCategory: {
+              [Op.or]: data.subcategory
+          },
+          price: {
+              [Op.between]: data.price
+          }
+    }
       let queryJson = {
         where: whereJson,
         include: [

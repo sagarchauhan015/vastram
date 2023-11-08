@@ -1,6 +1,6 @@
 import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
 
 import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
@@ -12,10 +12,11 @@ intializeConnection();
 // To sync the table (If table is not in DB, it will create the table)
 sequelize.sync();
 
-export async function GET(request : any, {params} : any){
+export async function GET(request: NextRequest, {params}: any){
     try {
+        const productId = request.nextUrl.searchParams.get('productId');
         let whereJson = {
-          category : params.category
+          Id : productId
         }
         let queryJson = {
           where: whereJson,

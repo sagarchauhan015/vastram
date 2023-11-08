@@ -18,6 +18,7 @@
     padding-bottom: 1.75rem;
 }
 .pd-route{
+    text-transform: capitalize;
     padding-top: 1rem;
     text-align: center;
     display: flex;
@@ -158,10 +159,11 @@ tr > th:last-child{
 }
 .pd-size-name{
     border: 1px solid var(--black3);
+    text-transform: uppercase;
     text-align: center;
     width: 65px;
     padding: .8rem 1.4rem;
-    cursor: pointer;
+    cursor: pointer !important;
     font-weight: 600;
     color: var(--black2);
     transition: background 0.4s linear;

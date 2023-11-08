@@ -4,11 +4,15 @@ import NewArrivals from '@/Components/NewArrivals/NewArrivals'
 import ProductDetails from '@/Components/ProductDetails/ProductDetails'
 import React from 'react'
 
-export default function product() {
+
+
+export default function Product(props: any){
   return (
     <>
         <Navbar/>
-        <ProductDetails />
+        <ProductDetails 
+          productId={props.searchParams.productId}
+        />
         <NewArrivals />
         <Footer />
     </>

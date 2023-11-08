@@ -1,49 +1,70 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import wishIcon from '/public/Images/wishlisticon.svg'
 import infoIcon from '/public/Images/Infoicon.svg'
-
-
 import carretIcon from 'public/Images/carret_black.svg'
-
+import { productFunctions } from '@/app/(pages)/product/productFunctions'
 
 import './ProductDetails.css'
 
-export default function ProductDetails() {
+interface propsType{
+    productId: string,
+}
+
+export default function ProductDetails(props: propsType) {
+  
+  const [productData, setproductData] = useState<productInterface>()
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const result = await productFunctions.getProductById(props.productId);
+            await setproductData(result);
+            console.log(productData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+    
+    fetchData();
+  
+  }, [])
+  
   return (
     <>
         <div className="pd-container">
             <div className="pd-breadcrums">
                 <div className="pd-route">
-                    <Link className='pd-route-link' href={"/"}>Home </Link>
+                    <Link className='pd-route-link' href={"/"}>Home</Link>
                     <Image className='pd-carret-icon' src={carretIcon} width={1000} alt='carret'></Image>
-                    <Link className='pd-route-link' href={"/"}>Men </Link>
+                    <Link className='pd-route-link' href={`/${productData?.category}`}>{productData?.category} </Link>
                     <Image className='pd-carret-icon' src={carretIcon} width={1000} alt='carret'></Image>
-                    <Link className='pd-route-link' href={"/"}>T-shirts </Link>
+                    <Link className='pd-route-link' href={`/${productData?.category}?category=${productData?.category}&subcategory=${productData?.subCategory}`}>{productData?.subCategory} </Link>
                 </div>
             </div>
             <div className="pd-container-wrapper">
                 <div className="pd-container-left">
                     <div className="pd-img-detail">
                         <div className="pd-img">
-                            <Image className='pd-product-image' src="https://ik.imagekit.io/jkmgqwabx/vastram/men/greyShirt.webp?updatedAt=1696135970020" width={1000} height={1000} alt='carret'></Image>
+                            <Image className='pd-product-image' src={productData?.imgUrl ?? ""} width={1000} height={1000} alt='carret'></Image>
                         </div>
                     </div>
                 </div>
                 <div className="pd-container-right">
                     <div className="pd-detail">
                         <div className="pd-heading">
-                            <p className='pd-heading-para'>KUDRAT COTURE</p>
+                            <p className='pd-heading-para'>{productData?.productName}</p>
                             <div className="pc-wishlist">
                                 <Image className='pc-wishlist-img' src={wishIcon} alt='searchicon' width={22} height={22}></Image>
                             </div>
                         </div>
                         <div className="pd-subheading">
-                            Purple Silk Thread Embroidered Kurta Set
+                            {productData?.description}
                         </div>
                         <div className="pd-price">
-                            <p>₹ 1899</p>
+                            <p>₹ {productData?.price}</p>
                             <p>inclusive of all taxes</p>
                         </div>
                         <div className="pd-line"></div>
@@ -99,18 +120,18 @@ export default function ProductDetails() {
                                 </div>
                             </div>
                             <div className="pd-size-selection">
-                                <div className="pd-size-name">
-                                    XL
-                                </div>
-                                <div className="pd-size-name">
-                                    L
-                                </div>
-                                <div className="pd-size-name">
-                                    XL
-                                </div>
-                                <div className="pd-size-name">
-                                    L
-                                </div>
+                                {
+                                    productData?.sizes.map(sizeData => {
+                                        return(
+                                            <>
+                                                <div className="pd-size-name">
+                                                    {sizeData.size}
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                                
                             </div>
 
                         </div>

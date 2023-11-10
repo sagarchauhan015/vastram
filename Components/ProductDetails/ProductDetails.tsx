@@ -124,7 +124,7 @@ export default function ProductDetails(props: propsType) {
                                     productData?.sizes.map(sizeData => {
                                         return(
                                             <>
-                                                <div className="pd-size-name">
+                                                <div className="pd-size-name" tabIndex={1}>
                                                     {sizeData.size}
                                                 </div>
                                             </>
@@ -137,8 +137,8 @@ export default function ProductDetails(props: propsType) {
                         </div>
 
                         <div className="pd-action-btn">
-                            <div className="pd-bnow pd-action-cmn">Buy Now</div>
-                            <div className="pd-add-cart pd-action-cmn">Add to cart</div>
+                            <Link className='pd-bnow pd-action-cmn' href={'/cart/checkout'}><div className="">Buy Now</div></Link>
+                            <Link className='pd-action-cmn pd-add-cart' href={'/cart'}><div className="">Add to cart</div></Link>
                         </div>
                         <div className="pd-line"></div>
 

@@ -9,7 +9,6 @@ import React from 'react'
 export default function Product(props: any){
   return (
     <>
-        <Navbar/>
         <ProductDetails 
           productId={props.searchParams.productId}
         />

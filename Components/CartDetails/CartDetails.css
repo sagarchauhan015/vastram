@@ -1,0 +1,219 @@
+.ct-container{
+    width: 90%;
+    margin: 5rem auto 0rem;
+}
+.ct-container-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.ct-container-left, .ct-container-right{
+    width: 50%;
+    padding: 1rem;
+}
+.ct-container-heading{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.ct-cart-items{
+    margin: 1.5rem 0rem;
+}
+.ct-bill-summary{
+    margin: 1.5rem 0rem;
+}
+.ct-cart-item{
+    cursor: pointer;
+    margin: .5rem 0rem;
+    border: 1px solid var(--black5);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.ct-image{
+    width: 100px;
+    height: auto;
+}
+.ct-cart-item-left{
+    display: flex;
+}
+.ct-item-details{
+    margin-left: 1rem;
+    font-size: .9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.ct-item-name{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ct-item-des, .ct-item-code{
+    font-weight: 500;
+    color: var(--black3);
+    font-size: .8rem;
+}
+.ct-item-des{
+    margin-top: .3rem;
+}
+.ct-item-size{
+    display: flex;
+    align-items: center;
+}
+.ct-item-size-selected{
+    margin-left: .5rem;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black3);
+    color: var(--white1);
+    font-size: .8rem;
+}
+.ct-item-size-quantity{
+    display: flex;
+    align-items: center;
+}
+.ct-item-quantity{
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+.ct-quantity-icon{
+    margin: 0rem .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ct-quantity-num{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.ct-quant-img{
+    width: 18px;
+    height: 18px;
+}
+.ct-item-code{
+    margin-top: .5rem;
+    margin-bottom: .3rem;
+}
+.ct-item-price{
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.ct-item-ship{
+    font-size: .8rem;
+}
+.ct-cart-item-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.ct-item-action{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ct-container-right{
+    width: 40%;
+}
+.ct-bill{
+    border: 1px solid var(--black5);
+    padding: .5rem .8rem;
+}
+.ct-bill-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0rem;
+}
+.ct-bill-name, .ct-bill-value{
+    font-weight: 600;
+}
+.ct-bill-tax{
+    font-size: .6rem;
+    color: var(--black3);
+    font-weight: 400;
+}
+.ct-bill-info{
+    font-size: .7rem;
+    color: var(--black3);
+}
+.ct-promo-heading{
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ct-promo-input{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+.ct-promo-cmn{
+    padding: .5rem 1rem;
+}
+.ct-promo-btn{
+    width: 30%;
+    background-color: var(--black3);
+    color: var(--white1);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+.ct-promo-btn:hover{
+    background-color: var(--black1);
+}
+.ct-promo-input > input{
+    width: 70%;
+    border: 1px solid var(--black3);
+    border-right: none;
+    outline: none;
+}
+.ct-payable{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ct-payable-heading{
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ct-payable-amount{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.ct-action-btn{
+    margin-top: 2rem;
+}
+.ct-action-cmn{
+    margin: 1rem 0rem;
+    width: 100%;
+    padding: .65rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+.ct-action-checkout{
+    width: 100%;
+    background-color: var(--black3);
+    color: var(--white1);
+}
+.ct-action-shopping{
+    border: 1.5px solid var(--black3);
+}
+.ct-action-checkout:hover{
+    background-color: var(--black1);
+}
+.ct-action-shopping:hover{
+    background-color: var(--grey4);
+}

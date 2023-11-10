@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Image from 'next/image'
 import wishIcon from '/public/Images/wishlisticon.svg'
-import shirtImg from '/public/Images/shirt2.png'
+
 
 import './ProductCard.css'
 

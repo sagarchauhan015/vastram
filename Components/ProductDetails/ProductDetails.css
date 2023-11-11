@@ -179,6 +179,15 @@ tr > th:last-child{
     background-color: var(--black3);
     color: var(--white1);
 }
+.pd-size-alert{
+    display: none;
+    font-size: .8rem;
+    color: red;
+    margin-top: 1rem;
+}
+.pd-size-alert-show{
+    display: block;
+}
 .pd-action-btn{
     display: flex;
     align-items: center;

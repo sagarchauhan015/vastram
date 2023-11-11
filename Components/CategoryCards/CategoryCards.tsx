@@ -6,7 +6,7 @@ import './CategoryCards.css'
 import Filter from '../Filter/Filter'
 import Link from 'next/link'
 
-import useCardsArray from '@/store/store'
+import {useCardsArray} from '@/store/store'
 
 interface propsType{
     category: string,

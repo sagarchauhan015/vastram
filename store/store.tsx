@@ -11,6 +11,11 @@ interface CardState {
   updateCards: (items: card[]) => void
 }
 
+interface CartState{
+  cart: productInterface[],
+  updateCart: (items: productInterface[]) => void
+}
+
 const useCardsArray = create<CardState>()((set) => ({
   cards: [],
   updateCards: (items) => set((state) => ({
@@ -18,4 +23,11 @@ const useCardsArray = create<CardState>()((set) => ({
   }))
 }))
 
-export default useCardsArray;
+const useCartArray = create<CartState>()((set) => ({
+  cart: [],
+  updateCart: (items) => set((state) => ({
+    cart: items
+  }))
+}))
+
+export { useCardsArray, useCartArray };

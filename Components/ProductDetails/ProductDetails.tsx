@@ -8,6 +8,7 @@ import carretIcon from 'public/Images/carret_black.svg'
 import { productFunctions } from '@/app/(pages)/product/productFunctions'
 
 import './ProductDetails.css'
+import { stringUtils } from '@/utils/stringUtils/stringUtils'
 
 interface propsType{
     productId: string,
@@ -16,6 +17,8 @@ interface propsType{
 export default function ProductDetails(props: propsType) {
   
   const [productData, setproductData] = useState<productInterface>()
+  const [selectedSize, setselectedSize] = useState('')
+  const [showSizeAlert, setshowSizeAlert] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +34,24 @@ export default function ProductDetails(props: propsType) {
     fetchData();
   
   }, [])
+
+
+  async function handleSizeSelection(currentSize:string){
+    await setselectedSize(currentSize);
+    await setshowSizeAlert(false);
+  }
+
+  function handleAddToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>){
+    e.preventDefault();
+    if(stringUtils.isEmptyOrNull(selectedSize)){
+        setshowSizeAlert(true);
+    }
+    else{
+        setselectedSize('');
+        alert('Product added to cart');
+        console.log(selectedSize);
+    }
+  }
   
   return (
     <>
@@ -124,21 +145,23 @@ export default function ProductDetails(props: propsType) {
                                     productData?.sizes.map(sizeData => {
                                         return(
                                             <>
-                                                <div className="pd-size-name" tabIndex={1}>
+                                                <div onClick={()=>handleSizeSelection(sizeData.size)} className={"pd-size-name" } tabIndex={sizeData.id}>
                                                     {sizeData.size}
                                                 </div>
                                             </>
                                         )
                                     })
                                 }
-                                
                             </div>
+                            <div className={showSizeAlert? 'pd-size-alert pd-size-alert-show' : 'pd-size-alert'}>Select an appropriate size</div>
 
                         </div>
 
                         <div className="pd-action-btn">
                             <Link className='pd-bnow pd-action-cmn' href={'/cart/checkout'}><div className="">Buy Now</div></Link>
-                            <Link className='pd-action-cmn pd-add-cart' href={'/cart'}><div className="">Add to cart</div></Link>
+                            {/* <Link className='pd-action-cmn pd-add-cart' href={'/cart'}> */}
+                                <div onClick={(e)=>handleAddToCart(e)} className="pd-action-cmn pd-add-cart">Add to cart</div>
+                            {/* </Link> */}
                         </div>
                         <div className="pd-line"></div>
 

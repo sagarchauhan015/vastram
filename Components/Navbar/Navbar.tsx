@@ -11,7 +11,7 @@ import cartIcon from '/public/Images/carticon.svg'
 import hamburger from '/public/Images/hamburger.svg'
 import profileIcon from '/public/Images/profileicon.svg'
 import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions'
-import useCardsArray from '@/store/store'
+import {useCardsArray} from '@/store/store'
 
 import './Navbar.css'
 
@@ -108,9 +108,12 @@ export default function Navbar(props : any) {
                     <div className="nav-wishlist" title='Wishlist'>
                         <Image src={wishIcon} alt='searchicon' width={22} height={22}></Image>
                     </div>
-                    <div className="nav-cart" title='Cart'>
-                        <Image src={cartIcon} alt='searchicon' width={22} height={22}></Image>
-                    </div>
+                    <Link href={"/cart"}>
+                        <div className="nav-cart" title='Cart'>
+                            <Image src={cartIcon} alt='searchicon' width={22} height={22}></Image>
+                            <div className="nav-cart-badge">2</div>
+                        </div>
+                    </Link>
 
                 </div>
             

@@ -18,8 +18,12 @@ export const Product = sequelize.define('Product', {
         type: DataTypes.STRING(250),
         allowNull: false
     },
+    productInfo: {
+        type: DataTypes.STRING(500),
+        allowNull: false
+    },
     price: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.DECIMAL(10,0),
         allowNull: false
     },
     imgUrl: {

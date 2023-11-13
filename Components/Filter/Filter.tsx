@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
-import useCardsArray from '@/store/store';
+import {useCardsArray} from '@/store/store';
 import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions';
 
 import './Filter.css'

@@ -12,6 +12,8 @@ import hamburger from '/public/Images/hamburger.svg'
 import profileIcon from '/public/Images/profileicon.svg'
 import { categoryFunctions } from '@/app/(pages)/[category]/categoryFunctions'
 import {useCardsArray} from '@/store/store'
+import { useCartArray } from '@/store/store'
+
 
 import './Navbar.css'
 
@@ -20,6 +22,7 @@ export default function Navbar(props : any) {
 
     const router = useRouter();
     const updateCardsArray = useCardsArray((state) => state.updateCards);
+    const cartArray  = useCartArray((state)=> state.cart)
 
     async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
         router.push(`/${category}?category=${category}`)
@@ -111,7 +114,7 @@ export default function Navbar(props : any) {
                     <Link href={"/cart"}>
                         <div className="nav-cart" title='Cart'>
                             <Image src={cartIcon} alt='searchicon' width={22} height={22}></Image>
-                            <div className="nav-cart-badge">2</div>
+                            <div className="nav-cart-badge">{cartArray.length}</div>
                         </div>
                     </Link>
 

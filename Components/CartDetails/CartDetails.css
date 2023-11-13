@@ -69,6 +69,7 @@
     background-color: var(--black3);
     color: var(--white1);
     font-size: .8rem;
+    text-transform: uppercase;
 }
 .ct-item-size-quantity{
     display: flex;
@@ -96,6 +97,7 @@
 .ct-item-code{
     margin-top: .5rem;
     margin-bottom: .3rem;
+    text-transform: uppercase;
 }
 .ct-item-price{
     font-weight: 600;

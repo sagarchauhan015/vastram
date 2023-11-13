@@ -6,6 +6,7 @@ import wishIcon from '/public/Images/wishlisticon.svg'
 import infoIcon from '/public/Images/Infoicon.svg'
 import carretIcon from 'public/Images/carret_black.svg'
 import { productFunctions } from '@/app/(pages)/product/productFunctions'
+import { useCartArray } from '@/store/store'
 
 import './ProductDetails.css'
 import { stringUtils } from '@/utils/stringUtils/stringUtils'
@@ -15,8 +16,8 @@ interface propsType{
 }
 
 export default function ProductDetails(props: propsType) {
-  
-  const [productData, setproductData] = useState<productInterface>()
+  const updateCartArray = useCartArray((state) => state.updateCart)
+  const [productData, setproductData] = useState<productInterface>({} as productInterface)
   const [selectedSize, setselectedSize] = useState('')
   const [showSizeAlert, setshowSizeAlert] = useState(false)
 
@@ -49,9 +50,13 @@ export default function ProductDetails(props: propsType) {
     else{
         setselectedSize('');
         alert('Product added to cart');
-        console.log(selectedSize);
+        const newItem: cartInterface = {
+            productItem: productData,
+            productSize: selectedSize,
+        };
+        updateCartArray(newItem);
     }
-  }
+    }
   
   return (
     <>
@@ -142,7 +147,7 @@ export default function ProductDetails(props: propsType) {
                             </div>
                             <div className="pd-size-selection">
                                 {
-                                    productData?.sizes.map(sizeData => {
+                                    productData?.sizes?.map(sizeData => {
                                         return(
                                             <>
                                                 <div onClick={()=>handleSizeSelection(sizeData.size)} className={"pd-size-name" } tabIndex={sizeData.id}>

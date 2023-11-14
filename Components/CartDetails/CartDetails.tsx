@@ -36,7 +36,7 @@ export default function CartDetails() {
                       cartArray?.map((cartItem) => {
                         return(
                           <>
-                             <div className="ct-cart-item">
+                             <div key={cartItem.productItem.Id} className="ct-cart-item">
                                 <div className="ct-cart-item-left">
                                   <Image className='ct-image' src={cartItem.productItem.imgUrl ?? "https://ik.imagekit.io/jkmgqwabx/vastram/women/shrug1.webp?updatedAt=1696185983533"} width={1000} height={1000} alt='carret'></Image>
                                   <div className="ct-item-details">

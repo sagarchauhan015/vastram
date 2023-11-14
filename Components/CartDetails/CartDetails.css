@@ -219,3 +219,25 @@
 .ct-action-shopping:hover{
     background-color: var(--grey4);
 }
+.ct-empty{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--black5);
+}
+.ct-empty-txt{
+    font-size: 1.5rem;
+    margin: 1rem 0rem .5rem;
+    color: var(--black5);
+}
+.ct-empty-shopping-txt{
+    font-size: .9rem;
+    margin: .5rem 0rem;
+    transition: all .2s linear;
+}
+.ct-empty-shopping-txt:hover{
+    text-decoration: underline;
+    color: var(--black1);
+}

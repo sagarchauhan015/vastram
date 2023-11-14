@@ -8,6 +8,7 @@ import './admin.css'
 interface productDetailsInterface{
   productName: string,
   description: string,
+  productInfo: string,
   price: number,
   imgUrl: string,
   category: string,
@@ -21,6 +22,7 @@ export default function admin() {
   const [productDetails, setProductDetails] = useState<productDetailsInterface>({
     productName: "",
     description: "",
+    productInfo: "",
     price: 0,
     imgUrl: "",
     category: "",
@@ -68,6 +70,10 @@ export default function admin() {
                   <div className="admin-input-field">
                     <label className='admin-form-label'>Product Description</label>
                     <input onChange={(e)=>{handleInputChange(e)}} type="text" name="description" id="" className='admin-input-box'/>
+                  </div>
+                  <div className="admin-input-field">
+                    <label className='admin-form-label'>Product Additional Info</label>
+                    <input onChange={(e)=>{handleInputChange(e)}} type="text" name="productInfo" id="" className='admin-input-box'/>
                   </div>
                   <div className="admin-input-field">
                     <label className='admin-form-label'>Price</label>

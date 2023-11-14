@@ -11,6 +11,7 @@ interface CardState {
 interface CartState{
   cart: cartInterface[],
   price: number,
+  // quantity: number,
   updateCart: (item: cartInterface) => void
 }
 

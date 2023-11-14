@@ -7,16 +7,16 @@ import wishIcon from '/public/Images/wishlisticon.svg'
 import crossIcon from '/public/Images/crossIcon.svg'
 import plusIcon from '/public/Images/plusicon.svg'
 import minusIcon from '/public/Images/minusicon.svg'
+import noCartIcon from '/public/Images/nocartitem.svg'
 
 import './CartDetails.css'
 import '../ProductDetails/ProductDetails.css'
 import { useCartArray } from '@/store/store'
-import { stringUtils } from '@/utils/stringUtils/stringUtils'
 
 export default function CartDetails() {
   const cartArray = useCartArray((state)=> state.cart)
   const cartPrice = useCartArray((state)=>state.price)
-  const totaPayable =  cartPrice > 1000 ? cartPrice + (12*cartPrice)/100 : cartPrice + (5*cartPrice)/100;
+  const totaPayable =  cartPrice > 1000 ? cartPrice + (12*cartPrice)/100 - 99 : cartPrice + (5*cartPrice)/100;
 
   return (
     <>
@@ -26,11 +26,8 @@ export default function CartDetails() {
                   <div className="ct-container-heading">Your shopping cart</div>
                   <div className="ct-cart-items">
                     {
-                      stringUtils.isUndefinedEmptyOrNull(cartArray) ?
-                      <>
-                        <div>Go to Shopping</div>
-                      </>
-                      :
+                      cartArray?.length > 0 ?
+                      
                       cartArray?.map((cartItem) => {
                         return(
                           <>
@@ -74,6 +71,16 @@ export default function CartDetails() {
                           </>
                         )
                       })
+                      :
+                      <>
+                        <div className='ct-empty'>
+                          <div><Image className='' src={noCartIcon} alt='searchicon' width={122} height={122}></Image></div>
+                          <div className='ct-empty-txt' >Hey! Your cart is looking empty</div>
+                          <div>we have some beautiful items for you</div>
+                          <Link className='ct-empty-shopping-txt' href={'/'}>Go to shopping</Link>
+                        </div>
+                      </>
+                      
                     }
                     {/* <div className="ct-cart-item">
                       <div className="ct-cart-item-left">
@@ -126,7 +133,7 @@ export default function CartDetails() {
                       </div>
                       <div className="ct-bill-item">
                         <div className="ct-bill-name">Total Discount</div>
-                        <div className="ct-bill-value">- ₹ {cartPrice > 2000 ? 99 : 0}</div>
+                        <div className="ct-bill-value">- ₹ {cartPrice > 1000 ? 99 : 0}</div>
                       </div>
                       <div className="ct-bill-item">
                         <div className="ct-bill-name">Taxes <span className='ct-bill-tax'>(incl. SGST & CGST)</span></div>

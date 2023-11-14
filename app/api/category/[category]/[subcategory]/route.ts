@@ -8,18 +8,12 @@ import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
 import { sequelize } from '@/utils/databaseUtils/databaseUtils';
 
 
-// No need to define alias in each route, it will throw an error 
-
-// // Define the association
-// Product.hasMany(Size, { foreignKey: 'productId', as: 'sizes' });
-// // You can also define the reverse association if needed
-// Size.belongsTo(Product, { foreignKey: 'productId', as: 'product' });
 
 
 // Build connection with database
 intializeConnection();
 // To sync the table (If table is not in DB, it will create the table)
-sequelize.sync({ force: true });
+sequelize.sync();
 
 export async function GET(request : any, {params} : any){
   try {

@@ -16,7 +16,12 @@ import { useCartArray } from '@/store/store'
 export default function CartDetails() {
   const cartArray = useCartArray((state)=> state.cart)
   const cartPrice = useCartArray((state)=>state.price)
-  const totaPayable =  cartPrice > 1000 ? cartPrice + (12*cartPrice)/100 - 99 : cartPrice + (5*cartPrice)/100;
+  const addQuantity = useCartArray((state)=> state.addQuantity)
+  const removeQuantity = useCartArray((state)=> state.removeQuantity)
+
+
+  const totaPayable =  cartPrice > 1000 ? cartPrice + Math.ceil((12*cartPrice)/100) - 99 : cartPrice + Math.ceil((5*cartPrice))/100;
+
 
   return (
     <>
@@ -43,9 +48,9 @@ export default function CartDetails() {
                                       <div className="ct-item-size">Size: <div className='ct-item-size-selected'>{cartItem.productSize}</div></div>
                                       <div className="ct-item-quantity">
                                         Qty: 
-                                        <span className='ct-quantity-icon'><Image className='ct-quant-img' src={plusIcon} alt='searchicon' width={22} height={22}></Image></span>
-                                        <span className='ct-quantity-num'>1</span>
-                                        <span className='ct-quantity-icon'><Image className='ct-quant-img' src={minusIcon} alt='searchicon' width={22} height={22}></Image></span>
+                                        <span className='ct-quantity-icon' onClick={()=>removeQuantity(cartItem)}><Image className='ct-quant-img' src={minusIcon} alt='searchicon' width={22} height={22}></Image></span>
+                                        <span className='ct-quantity-num'>{cartItem.productQuantity}</span>
+                                        <span className='ct-quantity-icon' onClick={()=>addQuantity(cartItem)}><Image className='ct-quant-img' src={plusIcon} alt='searchicon' width={22} height={22}></Image></span>
                                       </div>
                                     </div>
 
@@ -63,7 +68,7 @@ export default function CartDetails() {
                                       <Image className='pc-wishlist-img' src={wishIcon} alt='searchicon' width={22} height={22}></Image>
                                   </div>
                                   <div className="pc-wishlist">
-                                      <Image className='pc-wishlist-img' src={crossIcon} alt='searchicon' width={22} height={22}></Image>
+                                      <Image className='ct-cross-img' src={crossIcon} alt='searchicon' width={22} height={22}></Image>
                                   </div>
                                   </div>
                                 </div>
@@ -142,13 +147,13 @@ export default function CartDetails() {
                             cartPrice > 1000 ?
                             <>
                             {
-                              (12*cartPrice)/100
+                              Math.ceil((12*cartPrice)/100)
                             }
                             </>
                             :
                             <>
                             {
-                              (5*cartPrice)/100
+                              Math.ceil((5*cartPrice)/100)
                             }
                             </>
                           }

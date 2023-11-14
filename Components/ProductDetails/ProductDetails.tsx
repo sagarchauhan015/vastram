@@ -16,7 +16,9 @@ interface propsType{
 }
 
 export default function ProductDetails(props: propsType) {
+  const cartArray = useCartArray((state)=> state.cart)
   const updateCartArray = useCartArray((state) => state.updateCart)
+  const addQuantity = useCartArray((state)=> state.addQuantity)
   const [productData, setproductData] = useState<productInterface>({} as productInterface)
   const [selectedSize, setselectedSize] = useState('')
   const [showSizeAlert, setshowSizeAlert] = useState(false)
@@ -37,25 +39,36 @@ export default function ProductDetails(props: propsType) {
   }, [])
 
 
-  async function handleSizeSelection(currentSize:string){
-    await setselectedSize(currentSize);
-    await setshowSizeAlert(false);
-  }
+    async function handleSizeSelection(currentSize:string){
+        await setselectedSize(currentSize);
+        await setshowSizeAlert(false);
+    }
 
-  function handleAddToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>){
-    e.preventDefault();
-    if(stringUtils.isEmptyOrNull(selectedSize)){
-        setshowSizeAlert(true);
-    }
-    else{
-        setselectedSize('');
-        alert('Product added to cart');
-        const newItem: cartInterface = {
-            productItem: productData,
-            productSize: selectedSize,
-        };
-        updateCartArray(newItem);
-    }
+    async function handleAddToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, currentItemId:string, currentSize:string){
+        e.preventDefault();
+        if(stringUtils.isEmptyOrNull(selectedSize)){
+            await setshowSizeAlert(true);
+        }
+        else{
+            setselectedSize('');
+            const newItem: cartInterface = {
+                productItem: productData,
+                productSize: selectedSize,
+                productQuantity: 1
+            };
+
+            for(let i=0; i<cartArray.length; i++){
+                if(cartArray[i].productItem.Id === currentItemId && cartArray[i].productSize === currentSize){
+                    addQuantity(cartArray[i]);
+                    alert('Product added to cart');
+                    return;
+                }
+            }
+
+            await updateCartArray(newItem);
+            alert('Product added to cart');
+
+        }
     }
   
   return (
@@ -165,7 +178,7 @@ export default function ProductDetails(props: propsType) {
                         <div className="pd-action-btn">
                             <Link className='pd-bnow pd-action-cmn' href={'/cart/checkout'}><div className="">Buy Now</div></Link>
                             {/* <Link className='pd-action-cmn pd-add-cart' href={'/cart'}> */}
-                                <div onClick={(e)=>handleAddToCart(e)} className="pd-action-cmn pd-add-cart">Add to cart</div>
+                                <div onClick={(e)=>handleAddToCart(e, productData.Id, selectedSize)} className="pd-action-cmn pd-add-cart">Add to cart</div>
                             {/* </Link> */}
                         </div>
                         <div className="pd-line"></div>

@@ -36,7 +36,7 @@ export default function ProductDetails(props: propsType) {
     
     fetchData();
   
-  }, [])
+  }, [props.productId])
 
 
     async function handleSizeSelection(currentSize:string){

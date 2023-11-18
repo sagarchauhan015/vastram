@@ -5,5 +5,5 @@
 }
 .cust-menu-item:hover{
     color: var(--white1);
-    background-color: var(--black3);
+    background: var(--black3) !important;
 }

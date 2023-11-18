@@ -17,16 +17,6 @@ interface CartState{
 }
 
 
-// React.useEffect(() => {
-//   if (typeof window !== 'undefined') {
-//     window.addEventListener('beforeunload', () => {
-//       const currentState: CartState = get();
-//       localStorage.setItem('cartState', JSON.stringify(currentState));
-//     });
-//   }
-// }, [])
-
-
 const useCardsArray = create<CardState>()((set) => ({
   cards: [],
   updateCards: (items) => set((state) => ({
@@ -103,7 +93,7 @@ const useCartArray = create<CartState>((set, get) => {
   // Save state to localStorage before unloading the page
   
   // if (typeof global?.window !== 'undefined') {
-    window.addEventListener('beforeunload', () => {
+    global.window.addEventListener('beforeunload', () => {
       const currentState: CartState = get();
       localStorage.setItem('cartState', JSON.stringify(currentState));
     });

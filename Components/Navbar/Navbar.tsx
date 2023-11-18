@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, {useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -23,6 +23,7 @@ export default function Navbar(props : any) {
     const router = useRouter();
     const updateCardsArray = useCardsArray((state) => state.updateCards);
     const cartArray  = useCartArray((state)=> state.cart)
+    const [tempLogin, settempLogin] = useState<boolean>(true);
 
     async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
         router.push(`/${category}?category=${category}`)
@@ -106,7 +107,22 @@ export default function Navbar(props : any) {
                         <input type="text" name="" id="" placeholder='Search Products' />
                     </div>
                     <div className="nav-profile">
-                        <Image src={profileIcon} alt='searchicon' width={22} height={22}></Image>
+                        <Image src={profileIcon} className='nav-profile-icon' alt='searchicon' width={22} height={22}></Image>
+                        <div className="nav-dd">
+                            <div className="nav-dd-tip"></div>
+                            {
+                                tempLogin ?
+                                <>
+                                    <Link href={'/login'}><div className="nav-list-item ripple">Login</div></Link>
+                                    <Link href={'/'}><div className="nav-list-item ripple">Register</div></Link>
+                                </>
+                                :
+                                <>
+                                    <Link href={'/'}><div className="nav-list-item">Log Out</div></Link>
+                                </>
+                            }
+                            
+                        </div>
                     </div>
                     <div className="nav-wishlist" title='Wishlist'>
                         <Image src={wishIcon} alt='searchicon' width={22} height={22}></Image>

@@ -87,44 +87,6 @@ export default function CartDetails() {
                       </>
                       
                     }
-                    {/* <div className="ct-cart-item">
-                      <div className="ct-cart-item-left">
-                        <Image className='ct-image' src={"https://ik.imagekit.io/jkmgqwabx/vastram/women/shrug1.webp?updatedAt=1696185983533"} width={1000} height={1000} alt='carret'></Image>
-                        <div className="ct-item-details">
-                          <div>
-                            <div className="ct-item-name">Black Floral shirt</div>
-                            <div className="ct-item-des">Cotton printed black shirt with half seleves</div>
-                          </div>
-                          <div className='ct-item-size-quantity'>
-                            <div className="ct-item-size">Size: <div className='ct-item-size-selected'>S</div></div>
-                            <div className="ct-item-quantity">
-                              Qty: 
-                              <span className='ct-quantity-icon'><Image className='ct-quant-img' src={plusIcon} alt='searchicon' width={22} height={22}></Image></span>
-                              <span className='ct-quantity-num'>1</span>
-                              <span className='ct-quantity-icon'><Image className='ct-quant-img' src={minusIcon} alt='searchicon' width={22} height={22}></Image></span>
-                            </div>
-                          </div>
-
-                          <div>
-                            <div className="ct-item-code">CODE: VTM34235</div>
-                            <div className="ct-item-ship">Estimate Shipping Date : 7 Dec 2023</div>
-                          </div>
-
-                        </div>
-                      </div>
-                      <div className="ct-cart-item-right">
-                        <div className="ct-item-price">₹ 1299</div>
-                        <div className="ct-item-action">
-                        <div className="pc-wishlist">
-                            <Image className='pc-wishlist-img' src={wishIcon} alt='searchicon' width={22} height={22}></Image>
-                        </div>
-                        <div className="pc-wishlist">
-                            <Image className='pc-wishlist-img' src={crossIcon} alt='searchicon' width={22} height={22}></Image>
-                        </div>
-                        </div>
-                      </div>
-                    </div> */}
-
 
                   </div>
               </div>

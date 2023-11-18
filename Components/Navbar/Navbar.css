@@ -74,11 +74,14 @@
     margin-right: 1rem;
     cursor: pointer;
 }
-.nav-cart, .nav-profile, .nav-wishlist{
+.nav-cart, .nav-profile, .nav-profile-icon, .nav-wishlist{
     cursor: pointer;
     transition: all .3s linear;
 }
-.nav-cart:hover, .nav-profile:hover, .nav-wishlist:hover{
+.nav-cart:hover, .nav-wishlist:hover{
+    transform: scale(1.2);
+}
+.nav-profile:hover > .nav-profile-icon{
     transform: scale(1.2);
 }
 .nav-cart{
@@ -98,6 +101,46 @@
     font-size: .7rem;
     border-radius: 50%;
 }
+.nav-profile{
+    position: relative;
+}
+.nav-dd{
+    display: none;
+    margin-top: .5rem;
+    background-color: var(--white1);
+    width: 150px;
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    padding: .25rem 0rem;
+    filter: drop-shadow(var(--bs6));
+    border-radius: .3rem;
+    z-index: 9;
+    transform-style: preserve-3d;
+
+}
+.nav-profile:hover > .nav-dd{
+    display: block;
+}
+.nav-dd-tip{
+    height: .7rem;
+    width: .7rem;
+    position: absolute;
+    z-index: -1;
+    top: -5%;
+    left: 19%;
+    background-color: var(--white1);
+    transform: rotate(45deg);
+}
+.nav-list-item{
+    padding: .5rem 1rem;
+    font-weight: 500;
+    transition: all .3s linear;
+}
+.nav-list-item:hover{
+    background-color: var(--black3);
+    color: var(--white1);
+}
 
 .nav-hamburger{
     display: none;
@@ -115,6 +158,36 @@
 .nav-link-wrapper:hover .nav-dropdown-menu{
     display: block;
 }
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #ffffff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+  
+  .ripple:active:after {
+    transform: scale(0,0);
+    opacity: .2;
+    transition: 0s;
+}
+  
 
 @media (max-width: 1100px) and (min-width: 800px){
     .nav-links{

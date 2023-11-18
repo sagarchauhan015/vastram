@@ -18,6 +18,7 @@ export default function CartDetails() {
   const cartPrice = useCartArray((state)=>state.price)
   const addQuantity = useCartArray((state)=> state.addQuantity)
   const removeQuantity = useCartArray((state)=> state.removeQuantity)
+  const removeProductItem = useCartArray((state)=> state.removeProductItem)
 
 
   const totaPayable =  cartPrice > 1000 ? cartPrice + Math.ceil((12*cartPrice)/100) - 99 : cartPrice + Math.ceil((5*cartPrice))/100;
@@ -67,7 +68,7 @@ export default function CartDetails() {
                                   <div className="pc-wishlist">
                                       <Image className='pc-wishlist-img' src={wishIcon} alt='searchicon' width={22} height={22}></Image>
                                   </div>
-                                  <div className="pc-wishlist">
+                                  <div className="pc-wishlist" onClick={()=>removeProductItem(cartItem)}>
                                       <Image className='ct-cross-img' src={crossIcon} alt='searchicon' width={22} height={22}></Image>
                                   </div>
                                   </div>

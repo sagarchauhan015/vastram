@@ -44,8 +44,8 @@
 }
 .clear-btn{
     width: 100%;
-    border: 2px solid var(--black3);
-    color: var(--black3);
+    border: 2px solid var(--black3) !important;
+    color: var(--black3) !important;
 }
 .clear-btn:hover{
     border: 2px solid var(--black1);
@@ -53,13 +53,13 @@
 }
 .apply-btn{
     width: 100%;
-    background-color: var(--black3);
+    background-color: var(--black3) !important;
 }
 .apply-btn:hover{
-    background-color: var(--black1);
+    background-color: var(--black1) !important;
 }
 .price-slider{
-    color: var(--black1);
+    color: var(--black1) !important;
 }
 .filter-price-input{
     width: 90%;

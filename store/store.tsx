@@ -14,6 +14,7 @@ interface CartState{
   updateCart: (item: cartInterface) => void,
   addQuantity: (item: cartInterface) => void,
   removeQuantity: (item: cartInterface) => void,
+  removeProductItem: (item: cartInterface) => void,
 }
 
 
@@ -151,6 +152,19 @@ const useCartArray = create<CartState>((set, get) => {
         ...state,
         cart: state.cart,
         price:  state.price,
+      };
+    }),
+    removeProductItem: (item) =>
+    set((state) => {
+      const updatedCart = state.cart.filter((cartItem) =>
+        cartItem.productItem !== item.productItem ||
+        cartItem.productSize !== item.productSize
+      );
+
+      return {
+        ...state,
+        cart: updatedCart,
+        price: Number(state.price) - Number(item.productItem.price * item.productQuantity),
       };
     }),
   };

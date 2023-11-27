@@ -1,0 +1,10 @@
+.lg-container{
+    margin: 5rem auto 0rem;
+}
+.lg-bg-text{
+    font-size: 10rem;
+    font-weight: 900;
+    margin: auto;
+    text-align: center;
+    color: var(--grey4);
+}

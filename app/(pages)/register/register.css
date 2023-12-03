@@ -1,8 +1,8 @@
-.lg-container{
+.rg-container{
     margin: 5rem auto 0rem;
     position: relative;
 }
-.lg-bg-text{
+.rg-bg-text{
     font-size: 15rem;
     font-weight: 900;
     margin: auto;
@@ -13,22 +13,22 @@
     left: 50%;
     transform: translate(-50%);
     z-index: -1;
-    letter-spacing: 3rem;
+    letter-spacing: 2rem;
 }
-.lg-box-wrapper{
+.rg-box-wrapper{
     height: calc(100vh - 5rem);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.lg-box{
+.rg-box{
     padding: 1rem 2rem;
     width: 450px;
     border-radius: .7rem;
     box-shadow: var(--bs2);
     backdrop-filter: blur(5px);
 }
-.lg-heading{
+.rg-heading{
     display: flex;
     justify-content: center;
     font-size: 1.6rem;
@@ -36,35 +36,35 @@
     font-weight: 600;
     color: var(--black2);
 }
-.lg-input-box{
+.rg-input-box{
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
 }
-.lg-input-box > label{
+.rg-input-box > label{
     margin-bottom: .4rem;
     font-size: .9rem;
 }
-.lg-input-box > input{
+.rg-input-box > input{
     padding: .8rem .5rem;
     border-radius: .5rem;
     border: 1.5px solid var(--grey1);
 }
-.lg-forgot{
+.rg-forgot{
     font-size: .9rem;
     margin-top: .5rem;
     display: flex;
     justify-content: flex-end;
     color: var(--black4);
 }
-.lg-forgot > a:hover{
+.rg-forgot > a:hover{
     color: var(--black1);
     text-decoration: underline;
 }
-.lg-btn{
+.rg-btn{
     margin-top: 1.3rem;
 }
-.lg-btn > button{
+.rg-btn > button{
     width: 100%;
     padding: .6rem;
     border-radius: .5rem;
@@ -76,19 +76,19 @@
     cursor: pointer;
     transition: all .3s linear;
 }
-.lg-btn > button:hover{
+.rg-btn > button:hover{
     background-color: var(--black1);
 }
-.lg-redirect{
+.rg-redirect{
     font-size: .9rem;
     text-align: center;
     margin-top: 1.5rem;
     color: var(--black3);
 }
-.lg-redirect > a{
+.rg-redirect > a{
     font-weight: 600;
 }
-.lg-redirect > a:hover{
+.rg-redirect > a:hover{
     color: var(--black1);
     text-decoration: underline;
 }

@@ -28,7 +28,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             <div className="embla__slide" key={index}>
               <div className="embla-products">
                 {!stringUtils.isUndefinedEmptyOrNull(props.cardData) ?
-                  props.slideCard === 'ProductCard' ? <Link href={`/product?productId=${props.cardData[index].Id}`}> <ProductCard cardDetail={props.cardData[index]} /> </Link>: ""
+                  props.slideCard === 'ProductCard' ? <Link href={`/product?productId=${props.cardData[index]?.Id}`}> <ProductCard cardDetail={props.cardData[index]} /> </Link>: ""
                   :
                   <></>  
                 }

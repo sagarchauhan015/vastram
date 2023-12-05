@@ -16,15 +16,15 @@ export default function register() {
                 </div>
                 <div className="rg-input-box">
                   <label htmlFor="email">Email</label>
-                  <input type="text" placeholder='Email address' />
+                  <input type="email" placeholder='Email address' />
                 </div>
                 <div className="rg-input-box">
                   <label htmlFor="password">Password</label>
-                  <input type="text" placeholder='Password (min. 8 characters)' />
+                  <input type="password" placeholder='Password (min. 8 characters)' />
                 </div>
                 <div className="rg-input-box">
                   <label htmlFor="password">Confirm Password</label>
-                  <input type="text" placeholder='Same password' />
+                  <input type="password" placeholder='Same password' />
                 </div>
                 <div className="rg-btn">
                   <button className='ripple'>Register</button>

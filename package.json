@@ -22,10 +22,12 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.6.1",
     "next": "13.4.19",
+    "next-auth": "^4.24.5",
     "pg-hstore": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sequelize": "^6.33.0",
+    "stripe": "^14.7.0",
     "typescript": "5.2.2",
     "uuid": "^9.0.1",
     "zustand": "^4.4.3"

@@ -16,7 +16,7 @@ export default function Login() {
                 </div>
                 <div className="lg-input-box">
                   <label htmlFor="password">Password</label>
-                  <input type="text" placeholder='Password (min. 8 characters)' />
+                  <input type="password" placeholder='Password (min. 8 characters)' />
                 </div>
                 <div className="lg-forgot">
                   <a href="#">Forgot Password?</a>

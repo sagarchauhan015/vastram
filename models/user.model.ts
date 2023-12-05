@@ -15,13 +15,9 @@ export const User = sequelize.define('User', {
         allowNull: false,
         primaryKey: true
     },
-    firstname: {
+    name: {
         type: DataTypes.STRING(50),
         allowNull: false
-    },
-    lastname: {
-        type: DataTypes.STRING(50),
-        allowNull: true
     },
     email: {
         type: DataTypes.STRING(255),

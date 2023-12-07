@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import wishIcon from '/public/Images/wishlisticon.svg'
 import crossIcon from '/public/Images/crossIcon.svg'
@@ -11,9 +12,11 @@ import noCartIcon from '/public/Images/nocartitem.svg'
 
 import './CartDetails.css'
 import '../ProductDetails/ProductDetails.css'
+import { cartFunctions } from '@/app/(pages)/cart/cartFunction'
 import { useCartArray } from '@/store/store'
 
 export default function CartDetails() {
+  const router = useRouter();
   const cartArray = useCartArray((state)=> state.cart)
   const cartPrice = useCartArray((state)=>state.price)
   const addQuantity = useCartArray((state)=> state.addQuantity)
@@ -22,6 +25,20 @@ export default function CartDetails() {
 
 
   const totaPayable =  cartPrice > 1000 ? cartPrice + Math.ceil((12*cartPrice)/100) - 99 : cartPrice + Math.ceil((5*cartPrice))/100;
+
+  async function handleCheckout(e: React.MouseEvent<HTMLDivElement, MouseEvent>){
+      e.preventDefault();
+        
+      let data = {
+          cartPrice: totaPayable,
+          headers: {
+              "Content-Type": 'application/json'
+          }
+      }
+
+      const response = await cartFunctions.proceedToCheckout(data);
+      router.push(response);
+  }
 
 
   return (
@@ -136,7 +153,7 @@ export default function CartDetails() {
                   </div>
                   <div className="pd-line"></div>
                   <div className="ct-action-btn">
-                        <Link className='' href={'/cart/checkout'}><div className="ct-action-cmn ct-action-checkout">Proceed to checkout</div></Link>
+                        <div onClick={(e) => handleCheckout(e)} className="ct-action-cmn ct-action-checkout">Proceed to checkout</div>
                         <Link className='' href={'/cart'}><div className="ct-action-cmn ct-action-shopping">Continue Shopping</div></Link>
                     </div>
 

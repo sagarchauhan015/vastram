@@ -3,8 +3,8 @@ import { stripe } from "@/libs/Stripe/stripe";
 
 export async function POST(request: NextRequest) {
     try {
-        let data = request.json();
-        const checkoutPrice = 2534;
+        let data = await request.json();
+        const checkoutPrice = data.cartPrice;
 
 
         const session  =  await stripe.checkout.sessions.create({

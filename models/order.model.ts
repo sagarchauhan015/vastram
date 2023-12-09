@@ -25,6 +25,14 @@ export const Order = sequelize.define('Order',{
         type: DataTypes.STRING(50),
         allowNull: false
     },
+    orderAmount: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    phoneNumber: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
     shippingAddress: {
         type: DataTypes.STRING(50),
         allowNull: false

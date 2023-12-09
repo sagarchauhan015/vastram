@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/libs/Stripe/stripe";
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export async function POST(request: NextRequest) {
     try {
         let data = await request.json();
         const checkoutPrice = data.cartPrice;
+
+        const userSession =  await getServerSession(authOptions);
+        console.log(userSession);
+
+        const userId =  "f07b97bf-5ccd-4139-b013-a08de9ae2d44";
 
 
         const session  =  await stripe.checkout.sessions.create({
@@ -32,9 +39,9 @@ export async function POST(request: NextRequest) {
             billing_address_collection: 'required',
             success_url: 'http://localhost:3000/order',
             cancel_url: 'http://localhost:3000/dashboard',
-            // metadata: {
-            //     userId
-            // }
+            metadata: {
+                userId
+            }
         })
         console.log(session.url)
         return NextResponse.json(session.url);

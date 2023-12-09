@@ -61,7 +61,16 @@ export const authOptions : AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/login'
-  }
+  },
+  callbacks: {
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub,
+      },
+    }),
+  },
 }
 
 const authHandler = NextAuth(authOptions);

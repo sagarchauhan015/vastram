@@ -1,5 +1,4 @@
 'use client'
-import React from 'react';
 import { create } from 'zustand'
 
 
@@ -24,62 +23,6 @@ const useCardsArray = create<CardState>()((set) => ({
     cards: items
   }))
 }))
-
-// const useCartArray = create<CartState>((set) => ({
-//   cart: [],
-//   price: 0,
-//   updateCart: (item) =>
-//     set((state) => ({
-//       cart: [...state.cart, item],
-//       price: Number(state.price) + Number(item.productItem.price),
-//    })),
-//    addQuantity: (item) =>
-//     set((state) => {
-//       const updatedCart = state.cart.map((cartItem) =>
-//         cartItem.productItem === item.productItem &&
-//         cartItem.productSize === item.productSize
-//           ? { ...cartItem, productQuantity: cartItem.productQuantity + 1 }
-//           : cartItem
-//       );
-      
-//       if(item.productQuantity >= 1 && item.productQuantity < 10){
-//         return {
-//           ...state,
-//           cart: updatedCart,
-//           price:  Number(state.price) + Number(item.productItem.price),
-//         };
-//       }
-//       return {
-//         ...state,
-//         cart: state.cart,
-//         price:  state.price,
-//       };
-      
-//     }),
-//     removeQuantity: (item) =>
-//     set((state) => {
-//       const updatedCart = state.cart.map((cartItem) =>
-//         cartItem.productItem === item.productItem &&
-//         cartItem.productSize === item.productSize
-//           ? { ...cartItem, productQuantity: cartItem.productQuantity - 1 }
-//           : cartItem
-//       );
-
-//       if(item.productQuantity > 1 && item.productQuantity <= 10){
-//         return {
-//           ...state,
-//           cart: updatedCart,
-//           price:  Number(state.price) - Number(item.productItem.price),
-//         };
-//       }
-//       return {
-//         ...state,
-//         cart: state.cart,
-//         price:  state.price,
-//       };
-//     }),
-
-// }));
 
 const useCartArray = create<CartState>((set, get) => {
   // Load state from localStorage if available

@@ -154,7 +154,7 @@ export default function CartDetails() {
                   <div className="pd-line"></div>
                   <div className="ct-action-btn">
                         <div onClick={(e) => handleCheckout(e)} className="ct-action-cmn ct-action-checkout">Proceed to checkout</div>
-                        <Link className='' href={'/cart'}><div className="ct-action-cmn ct-action-shopping">Continue Shopping</div></Link>
+                        <Link className='' href={'/men?category=men'}><div className="ct-action-cmn ct-action-shopping">Continue Shopping</div></Link>
                     </div>
 
               </div>

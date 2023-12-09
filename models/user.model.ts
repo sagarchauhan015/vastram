@@ -6,8 +6,6 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "@/utils/databaseUtils/databaseUtils";
 
 
-
-
 export const User = sequelize.define('User', {
     Id: {
         type: DataTypes.UUID,
@@ -24,6 +22,10 @@ export const User = sequelize.define('User', {
         allowNull: false
     },
     password: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+    },
+    confirmPassword: {
         type: DataTypes.STRING(255),
         allowNull: true
     },

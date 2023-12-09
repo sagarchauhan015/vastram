@@ -114,7 +114,7 @@ export default function Navbar(props : any) {
                                 tempLogin ?
                                 <>
                                     <Link href={'/login'}><div className="nav-list-item ripple">Login</div></Link>
-                                    <Link href={'/'}><div className="nav-list-item ripple">Register</div></Link>
+                                    <Link href={'/register'}><div className="nav-list-item ripple">Register</div></Link>
                                 </>
                                 :
                                 <>

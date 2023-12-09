@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
                     product_data: {
                     name: 'Cart Checkout',
                     },
-                    unit_amount: checkoutPrice,
+                    unit_amount: checkoutPrice*100,
                     tax_behavior: 'exclusive',
                 },
                 quantity: 1,

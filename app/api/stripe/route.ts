@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/libs/Stripe/stripe";
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { User } from "@/models/user.model";
 
 export async function POST(request: NextRequest) {
     try {
@@ -11,7 +12,19 @@ export async function POST(request: NextRequest) {
         const userSession =  await getServerSession(authOptions);
         console.log(userSession);
 
-        const userId =  "f07b97bf-5ccd-4139-b013-a08de9ae2d44";
+        if(!userSession){
+            return NextResponse.json('/login');
+        }
+
+        let whereJson = {
+            email : userSession.user?.email
+        }
+        let queryJson = {
+            where : whereJson
+        }
+        const userObj = await User.findOne(queryJson); 
+
+        const userId =  userObj?.dataValues.Id;
 
 
         const session  =  await stripe.checkout.sessions.create({
@@ -43,7 +56,6 @@ export async function POST(request: NextRequest) {
                 userId
             }
         })
-        console.log(session.url)
         return NextResponse.json(session.url);
     } catch (error) {
         console.error("Error creating Stripe checkout session:", error);

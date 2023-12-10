@@ -16,7 +16,6 @@ export async function POST(request : NextRequest){
       const data = await request.json();
       data['password'] = await bcrypt.hash(data.password, 6);
       data['confirmPassword'] = await bcrypt.hash(data.confirmPassword, 6);
-      console.log(data);
 
       let whereJson = {
         email: data.email

@@ -4,6 +4,7 @@ import { DataTypes } from "sequelize";
 
 // Import sequelize object from databaseUtils
 import { sequelize } from "@/utils/databaseUtils/databaseUtils";
+import { Order } from "./order.model";
 
 
 export const User = sequelize.define('User', {
@@ -38,3 +39,9 @@ export const User = sequelize.define('User', {
     updatedAt: DataTypes.DATE,
     
 })
+
+
+// Define the association
+User.hasMany(Order, { foreignKey: 'userId', as: 'orders' });
+// You can also define the reverse association if needed
+Order.belongsTo(User, { foreignKey: 'userId', as: 'users' });

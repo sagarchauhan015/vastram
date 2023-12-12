@@ -1,0 +1,15 @@
+.uh-container{
+    margin-top: 5rem;
+}
+.uh-nav{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.uh-nav-name{
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    font-weight: 600;
+}

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import wishIcon from '/public/Images/wishlisticon.svg'
-import crossIcon from '/public/Images/crossIcon.svg'
+import crossIcon from '/public/Images/deleteicon.svg'
 import plusIcon from '/public/Images/plusicon.svg'
 import minusIcon from '/public/Images/minusicon.svg'
 import noCartIcon from '/public/Images/nocartitem.svg'

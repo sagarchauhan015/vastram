@@ -1,15 +1,110 @@
 .uh-container{
-    margin-top: 5rem;
+    height: 100vh;
 }
-.uh-nav{
-    width: 90%;
-    margin: auto;
+.uh-wrapper{
+    height: 100%;
+    padding-top: 4rem;
+    display: flex;
+}
+.uh-sidebar{
+    width: 22%;
+    padding: 1.5rem 1rem 1rem;
+    border-right: 1px solid var(--grey1);
+}
+.uh-profile{
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
-.uh-nav-name{
-    text-transform: capitalize;
-    font-size: 1.4rem;
+.uh-profile-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.uh-profile-txt{
+    height: 100%;
+    width: 100%;
+    background-color: var(--black1);
+    color: var(--white1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
     font-weight: 600;
+    text-transform: capitalize;
+}
+.uh-profile-name{
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+.uh-nav-menu{
+    margin-top: 1rem;
+}
+.uh-nav-item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+}
+.uh-nav-item:hover{
+    background-color: var(--grey5);
+}
+.uh-nav-item-txt{
+    margin-left: .5rem;
+}
+.uh-orders{
+    width: 75%;
+    padding: 1.5rem 2rem 1rem;
+}
+.uh-order-section{
+    font-size: 1.4rem;
+}
+.uh-order-details{
+    margin-top: 2rem;
+    border: .8px solid var(--grey1);
+}
+.uh-order-headers{
+    border-bottom: .8px solid var(--grey1);
+    background-color: var(--black2);
+    color: var(--white1);
+}
+.uh-order-headers, .uh-order-item{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.uh-order-heading{
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: .8rem 0rem;
+}
+.uh-order-item{
+    cursor: pointer;
+}
+.uh-order-item:hover{
+    background-color: var(--grey5);
+}
+.uh-order-data{
+    padding: .6rem 0rem;
+    text-align: center;
+}
+.uh-order-pending{
+    color: orange;
+    font-weight: 500;
+}
+.uh-order-delivered{
+    color: rgb(62, 213, 35);
+    font-weight: 500;
+}
+.uh-order-cancelled{
+    color: red;
+    font-weight: 500;
+}
+.uh-order-id{
+    text-transform: uppercase;
 }

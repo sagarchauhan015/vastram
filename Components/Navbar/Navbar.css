@@ -155,14 +155,23 @@
     border-radius: .25rem;
 }
 .nav-search-menu-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: .8rem .6rem;
     cursor: pointer;
 }
 .nav-search-menu-item:hover{
     background-color: var(--grey5);
 }
-.nav-search-menu-item:not(:first-child){
-    border-top: 1px solid var(--grey4);
+.nav-search-menu-item{
+    border-bottom: 1px solid var(--grey4);
+}
+.nav-search-menu-item-cat{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .6rem;
+    color: var(--grey1);
 }
 
 .nav-hamburger{

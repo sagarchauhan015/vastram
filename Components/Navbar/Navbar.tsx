@@ -25,7 +25,7 @@ export default function Navbar(props : any) {
     const updateCardsArray = useCardsArray((state) => state.updateCards);
     const cartArray  = useCartArray((state)=> state.cart)
 
-    const [searchQuery, setsearchQuery] = useState<string>('')
+    const [searchMenuVisibility, setsearchMenuVisibility] = useState<boolean>(false)
     const [searchResult, setsearchResult] = useState<[productInterface]>()
 
     async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
@@ -49,15 +49,15 @@ export default function Navbar(props : any) {
       }
 
       async function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log('value from direct event: ', e.target.value);
-        await setsearchQuery(e.target.value);
-        console.log('value after setting state: ', searchQuery);
-
+        await setsearchMenuVisibility(true);
         const result = await categoryFunctions.getProductBySearchInput(e.target.value);
         if(result.isSuccess){
             setsearchResult(result.data);
         }
+      }
 
+      function toogleSearchMenu(){
+        setsearchMenuVisibility(false);
       }
 
   return (
@@ -121,22 +121,23 @@ export default function Navbar(props : any) {
                     <div className="nav-search">
                         <Image src={searchIcon} alt='searchicon' width={15} height={15}></Image>
                         <input type="text" name="" id="" onChange={(e) => handleSearchInput(e)} placeholder='Search Products' />
-                        <div className="nav-search-menu">
+                        {searchMenuVisibility && <div className="nav-search-menu">
                             {
                                 !stringUtils.isUndefinedEmptyOrNull(searchResult) ?
                                     searchResult?.map(item => (
                                         <Link href={`/product?productId=${item.Id}`}>
-                                            <div className="nav-search-menu-item">
-                                                {item.productName}
+                                            <div className="nav-search-menu-item" onClick={toogleSearchMenu}>
+                                                <p>{item.productName}</p>
+                                                <p className="nav-search-menu-item-cat">{item.category}</p>
                                             </div>
                                         </Link>
                                     ))
                                 :
                                 <>
-                                    {/* <div>Can't find any product</div> */}
+                                    <div>Can't find any product</div>
                                 </>
                             }
-                        </div>
+                        </div>}
 
                         {/* <div className="nav-search-menu">
                             <div className="nav-search-menu-item">

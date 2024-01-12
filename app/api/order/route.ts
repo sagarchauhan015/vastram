@@ -14,10 +14,9 @@ sequelize.sync();
 
 export async function GET(request: NextRequest, {params}: any){
     try {
-        // const productId = request.nextUrl.searchParams.get('productId');
-        const data = await request.json();
+        const userMail = request.nextUrl.searchParams.get('userEmail');
         let whereJson = {
-          email : 'ram@gmail.com'
+          email : userMail
         }
         let queryJson = {
           where: whereJson,

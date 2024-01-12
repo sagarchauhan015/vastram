@@ -75,7 +75,7 @@
 }
 .uh-order-headers, .uh-order-item{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 .uh-order-heading{
     text-align: center;

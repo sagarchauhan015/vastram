@@ -11,16 +11,20 @@ import Image from 'next/image'
 import cartIcon from '/public/Images/carticon.svg'
 import appIcon from '/public/Images/overviewicon.svg'
 import logOutIcon from '/public/Images/logouticon.svg'
+import { stringUtils } from '@/utils/stringUtils/stringUtils'
 
 
 export default function UserHeader() {
   const {data: session} = useSession();
-  const [orderHistory, setorderHistory] = useState([]);
-  
+  const [orderHistory, setorderHistory] = useState<[orderInterface]>();
+
   useEffect(() => {
-    const dataJson = {userEmail : session?.user?.email}
-    const response = orderFunctions.getOrderByEmail(dataJson);
-    
+    async function init() {
+        const dataJson = {userEmail : session?.user?.email}
+        const response = await orderFunctions.getOrderByEmail(dataJson);
+        setorderHistory(response);
+    }
+    init();
   }, [])
   
 
@@ -72,9 +76,29 @@ export default function UserHeader() {
                             <div className="uh-order-heading">Order Status</div>
                             <div className="uh-order-heading">Address</div>
                             <div className="uh-order-heading">Delivery date</div>
-                        </div>
+                            <div className="uh-order-heading">Order Amount</div>
 
-                        <div className="uh-order-item">
+                        </div>
+                        {   
+                            stringUtils.isUndefinedEmptyOrNull(orderHistory) ? 
+                                <div>No order to show</div>
+                            :
+
+                            Array.isArray(orderHistory) &&  orderHistory?.map(order => (
+                                <>
+                                    <div className="uh-order-item">
+                                        <div className="uh-order-data uh-order-id">VSM{order.Id.slice(0, 8)}</div>
+                                        <div className="uh-order-data">{order?.paymentStatus}</div>
+                                        <div className={{'Pending':"uh-order-data uh-order-pending", 'Delivered' : "uh-order-data uh-order-delivered", 'Cancelled' : "uh-order-data uh-order-cancelled"}[order.orderStatus]}>{order.orderStatus}</div>
+                                        <div className="uh-order-data">{order.shippingAddress}</div>
+                                        <div className="uh-order-data">{order.createdAt.toString().split('T')[0]}</div>
+                                        <div className="uh-order-data">{order.orderAmount}</div>
+                                    </div>
+                                </>
+                            ))
+                        }
+
+                        {/* <div className="uh-order-item">
                             <div className="uh-order-data uh-order-id">VSM435gfs3</div>
                             <div className="uh-order-data">Completed</div>
                             <div className={{'pending':"uh-order-data uh-order-pending", 'delivered' : "uh-order-data uh-order-delivered", 'cancelled' : "uh-order-data uh-order-cancelled"}['pending']}>Pending</div>
@@ -87,7 +111,7 @@ export default function UserHeader() {
                             <div className={{'pending':"uh-order-data uh-order-pending", 'delivered' : "uh-order-data uh-order-delivered", 'cancelled' : "uh-order-data uh-order-cancelled"}['delivered']}>Delivered</div>
                             <div className="uh-order-data">Greater Noida</div>
                             <div className="uh-order-data">23-03-2023</div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

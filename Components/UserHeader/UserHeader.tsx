@@ -4,7 +4,6 @@ import {useState, useEffect} from 'react'
 import './UserHeader.css'
 
 import { signOut } from 'next-auth/react'
-
 import { orderFunctions } from '@/app/(pages)/order/orderFunctions'
 import {  useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -97,21 +96,6 @@ export default function UserHeader() {
                                 </>
                             ))
                         }
-
-                        {/* <div className="uh-order-item">
-                            <div className="uh-order-data uh-order-id">VSM435gfs3</div>
-                            <div className="uh-order-data">Completed</div>
-                            <div className={{'pending':"uh-order-data uh-order-pending", 'delivered' : "uh-order-data uh-order-delivered", 'cancelled' : "uh-order-data uh-order-cancelled"}['pending']}>Pending</div>
-                            <div className="uh-order-data">Greater Noida</div>
-                            <div className="uh-order-data">23-03-2023</div>
-                        </div>
-                        <div className="uh-order-item">
-                            <div className="uh-order-data uh-order-id">VSM43ssges3</div>
-                            <div className="uh-order-data">Completed</div>
-                            <div className={{'pending':"uh-order-data uh-order-pending", 'delivered' : "uh-order-data uh-order-delivered", 'cancelled' : "uh-order-data uh-order-cancelled"}['delivered']}>Delivered</div>
-                            <div className="uh-order-data">Greater Noida</div>
-                            <div className="uh-order-data">23-03-2023</div>
-                        </div> */}
                     </div>
                 </div>
 

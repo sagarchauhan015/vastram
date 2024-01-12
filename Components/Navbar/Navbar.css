@@ -141,6 +141,29 @@
     background-color: var(--black3);
     color: var(--white1);
 }
+.nav-search{
+    position: relative;
+}
+.nav-search-menu{
+    position: absolute;
+    background-color: white;
+    left: 0%;
+    top: 100%;
+    width: 140%;
+    box-shadow: var(--bs1);
+    font-size: .9rem;
+    border-radius: .25rem;
+}
+.nav-search-menu-item{
+    padding: .8rem .6rem;
+    cursor: pointer;
+}
+.nav-search-menu-item:hover{
+    background-color: var(--grey5);
+}
+.nav-search-menu-item:not(:first-child){
+    border-top: 1px solid var(--grey4);
+}
 
 .nav-hamburger{
     display: none;

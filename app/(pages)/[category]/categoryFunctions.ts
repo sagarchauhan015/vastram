@@ -45,6 +45,21 @@ export const categoryFunctions = {
             }
             return errorResponse;
         }
+    },
+
+    async getProductBySearchInput(data: string){
+        try{
+            const params = {query: data};
+            let result = await axiosCall(`/api/product/productSearch`, 'GET', params, null, null);
+            return result.data;
+
+        }catch (error) {
+            let errorResponse = {
+                isSuccess: false,
+                error: error
+            }
+            return errorResponse;
+        }
     }
 
 }

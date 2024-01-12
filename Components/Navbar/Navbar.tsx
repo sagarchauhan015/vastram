@@ -16,6 +16,7 @@ import { useCartArray } from '@/store/store'
 
 
 import './Navbar.css'
+import { stringUtils } from '@/utils/stringUtils/stringUtils'
 
 
 export default function Navbar(props : any) {
@@ -23,7 +24,9 @@ export default function Navbar(props : any) {
     const router = useRouter();
     const updateCardsArray = useCardsArray((state) => state.updateCards);
     const cartArray  = useCartArray((state)=> state.cart)
-    const [tempLogin, settempLogin] = useState<boolean>(true);
+
+    const [searchQuery, setsearchQuery] = useState<string>('')
+    const [searchResult, setsearchResult] = useState<[productInterface]>()
 
     async function getProductByCategory(e : React.MouseEvent<HTMLElement>, category: string){
         router.push(`/${category}?category=${category}`)
@@ -44,6 +47,19 @@ export default function Navbar(props : any) {
         await updateCardsArray(result);
 
       }
+
+      async function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+        console.log('value from direct event: ', e.target.value);
+        await setsearchQuery(e.target.value);
+        console.log('value after setting state: ', searchQuery);
+
+        const result = await categoryFunctions.getProductBySearchInput(e.target.value);
+        if(result.isSuccess){
+            setsearchResult(result.data);
+        }
+
+      }
+
   return (
     <>
        <section className="nav-section">
@@ -104,24 +120,47 @@ export default function Navbar(props : any) {
                 <div className="nav-right">
                     <div className="nav-search">
                         <Image src={searchIcon} alt='searchicon' width={15} height={15}></Image>
-                        <input type="text" name="" id="" placeholder='Search Products' />
+                        <input type="text" name="" id="" onChange={(e) => handleSearchInput(e)} placeholder='Search Products' />
+                        <div className="nav-search-menu">
+                            {
+                                !stringUtils.isUndefinedEmptyOrNull(searchResult) ?
+                                    searchResult?.map(item => (
+                                        <Link href={`/product?productId=${item.Id}`}>
+                                            <div className="nav-search-menu-item">
+                                                {item.productName}
+                                            </div>
+                                        </Link>
+                                    ))
+                                :
+                                <>
+                                    {/* <div>Can't find any product</div> */}
+                                </>
+                            }
+                        </div>
+
+                        {/* <div className="nav-search-menu">
+                            <div className="nav-search-menu-item">
+                                Grey Printed Shirt
+                            </div>
+                            <div className="nav-search-line"></div>
+                            <div className="nav-search-menu-item">
+                                Grey Printed Shirt
+                            </div>
+                            <div className="nav-search-line"></div>
+                            <div className="nav-search-menu-item">
+                                Grey Printed Shirt
+                            </div>
+                        </div> */}
+
                     </div>
                     <div className="nav-profile">
                         <Image src={profileIcon} className='nav-profile-icon' alt='searchicon' width={22} height={22}></Image>
                         <div className="nav-dd">
-                            <div className="nav-dd-tip"></div>
-                            {
-                                tempLogin ?
-                                <>
-                                    <Link href={'/login'}><div className="nav-list-item ripple">Login</div></Link>
-                                    <Link href={'/register'}><div className="nav-list-item ripple">Register</div></Link>
-                                </>
-                                :
-                                <>
-                                    <Link href={'/'}><div className="nav-list-item">Log Out</div></Link>
-                                </>
-                            }
-                            
+                            <div className="nav-dd-tip">
+                            </div>
+                                <Link href={'/login'}><div className="nav-list-item ripple">Login</div></Link>
+                                <Link href={'/register'}><div className="nav-list-item ripple">Register</div></Link>
+
                         </div>
                     </div>
                     <div className="nav-wishlist" title='Wishlist'>

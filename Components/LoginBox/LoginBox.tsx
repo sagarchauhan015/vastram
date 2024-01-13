@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 
 
-import './loginBox.css'
+import './LoginBox.css'
 import { loginFunctions } from '@/app/(pages)/login/loginFunctions'
 
 export default function LoginBox() {

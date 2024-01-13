@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import config from "@/config";
+import env from '@/config'
 import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
 
 const instance = axios.create({
-    baseURL: process.env.DEV_APP_URL //bring this url using config file, not directly from the .env file{need changes}
+    baseURL: process.env.PROD_APP_URL  //bring this url using config file, not directly from the .env file{need changes}
 });
 
 

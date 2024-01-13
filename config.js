@@ -2,7 +2,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const env_dev = process.env.DEV_NEXT_ENV;
+const env_dev = process.env.PROD_NEXT_ENV;
 
 const dev = {
  app: {

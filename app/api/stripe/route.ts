@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
         const checkoutPrice = data.cartPrice;
 
         const userSession =  await getServerSession(authOptions);
-        console.log(userSession);
 
         if(!userSession){
             return NextResponse.json('/login');

@@ -13,14 +13,6 @@ import pg from 'pg';
 //         dialectModule: mysql2,
 //         host: config.db.host,
 //         port: config.app.port,
-//         dialectOptions: {
-//             ssl: {
-//                 rejectUnauthorized: true,
-//             },
-//         },
-//         define: {
-//             timestamps: false,
-//         },
 //     }
 // );
 

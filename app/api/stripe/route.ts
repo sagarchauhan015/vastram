@@ -49,8 +49,8 @@ export async function POST(request: NextRequest) {
                 enabled: true,
             },
             billing_address_collection: 'required',
-            success_url: 'http://localhost:3000/order',
-            cancel_url: 'http://localhost:3000/dashboard',
+            success_url: `${process.env.PROD_APP_URL}/order`, //'http://localhost:3000/order',
+            cancel_url: `${process.env.PROD_APP_URL}/dashboard`, //'http://localhost:3000/dashboard',
             metadata: {
                 userId
             }

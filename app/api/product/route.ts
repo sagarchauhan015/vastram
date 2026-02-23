@@ -8,10 +8,11 @@ import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseU
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest, {params}: any){
-    // Initialize database connection
-    await intializeConnection();
-    await syncDatabase();
     try {
+        // Initialize database connection
+        await intializeConnection();
+        await syncDatabase();
+        
         const productId = request.nextUrl.searchParams.get('productId');
         
         // Build query - only filter by Id if productId is provided

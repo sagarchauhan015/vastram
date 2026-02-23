@@ -1,55 +1,69 @@
 import { Sequelize, Options } from "sequelize";
 
-// Azure SQL Server Configuration
-const dbHost = process.env.DB_HOST || '';
-const dbName = process.env.DB_NAME || '';
-const dbUsername = process.env.DB_USERNAME || '';
-const dbPassword = process.env.DB_PASSWORD || '';
-const dbPort = parseInt(process.env.DB_PORT || '1433');
+// Get database config at runtime (not module load time)
+function getDbConfig() {
+    return {
+        host: process.env.DB_HOST || '',
+        name: process.env.DB_NAME || '',
+        username: process.env.DB_USERNAME || '',
+        password: process.env.DB_PASSWORD || '',
+        port: parseInt(process.env.DB_PORT || '1433')
+    };
+}
 
-// Check if we're in a build environment
-const isBuildTime = process.env.NODE_ENV === 'production' && !dbHost;
-
-// Sequelize configuration
-const sequelizeOptions: Options = {
-    host: dbHost || 'localhost',
-    port: dbPort,
-    dialect: 'mssql',
-    dialectOptions: {
-        options: {
-            encrypt: true,
-            trustServerCertificate: false,
-            enableArithAbort: true
-        }
-    },
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-    logging: process.env.NODE_ENV === 'development' ? console.log : false
-};
-
-// Create sequelize instance - it won't connect until authenticate() is called
-export const sequelize = new Sequelize(
-    dbName || 'tempdb',
-    dbUsername || 'sa', 
-    dbPassword || '',
-    sequelizeOptions
-);
-
+let sequelizeInstance: Sequelize | null = null;
 let isConnected = false;
 let syncPromise: Promise<void> | null = null;
 
+function createSequelizeInstance(): Sequelize {
+    const config = getDbConfig();
+    
+    // For build time, create a dummy instance that won't actually connect
+    const host = config.host || 'localhost';
+    const name = config.name || 'tempdb';
+    const username = config.username || 'sa';
+    const password = config.password || '';
+    
+    const sequelizeOptions: Options = {
+        host: host,
+        port: config.port,
+        dialect: 'mssql',
+        dialectOptions: {
+            options: {
+                encrypt: true,
+                trustServerCertificate: false,
+                enableArithAbort: true,
+                connectTimeout: 30000
+            }
+        },
+        pool: {
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000
+        },
+        logging: process.env.NODE_ENV === 'development' ? console.log : false
+    };
+    
+    return new Sequelize(name, username, password, sequelizeOptions);
+}
+
+// Create instance immediately for model definitions (but don't connect yet)
+export const sequelize = createSequelizeInstance();
+
 export async function intializeConnection(): Promise<void> {
-    // Skip during build time
-    if (isBuildTime || !dbHost) {
-        console.log('Skipping database connection (build time or not configured)');
-        return;
+    const config = getDbConfig();
+    
+    if (!config.host) {
+        throw new Error('DB_HOST environment variable is not set. Available env vars: ' + Object.keys(process.env).filter(k => k.startsWith('DB_')).join(', '));
     }
     
     if (isConnected) return;
+    
+    // Recreate instance with runtime config if needed
+    if (!sequelizeInstance) {
+        sequelizeInstance = createSequelizeInstance();
+    }
     
     try {
         await sequelize.authenticate();
@@ -57,23 +71,19 @@ export async function intializeConnection(): Promise<void> {
         isConnected = true;
     } catch (error) {
         console.error('Unable to connect to Azure SQL database:', error);
-        // Don't throw during build - just log
-        if (process.env.NODE_ENV !== 'production') {
-            throw error;
-        }
+        throw error;
     }
 }
 
 // Lazy sync - only syncs once per process
 export async function syncDatabase(): Promise<void> {
-    if (isBuildTime || !dbHost) return;
-    
     if (!syncPromise) {
         syncPromise = sequelize.sync().then(() => {
             console.log('Database synced successfully.');
         }).catch((error) => {
             console.error('Database sync failed:', error);
             syncPromise = null;
+            throw error;
         });
     }
     return syncPromise;

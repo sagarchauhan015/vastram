@@ -28,6 +28,7 @@ export async function GET() {
                 host: process.env.DB_HOST,
                 port: parseInt(process.env.DB_PORT || '1433'),
                 dialect: 'mssql',
+                dialectModule: tedious, // Explicitly pass tedious
                 dialectOptions: {
                     options: {
                         encrypt: true,

@@ -33,6 +33,7 @@ function createSequelizeInstance(): Sequelize {
         host: host,
         port: config.port,
         dialect: 'mssql',
+        dialectModule: tedious, // Explicitly pass tedious to avoid dynamic require
         dialectOptions: {
             options: {
                 encrypt: true,

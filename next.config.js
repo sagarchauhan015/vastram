@@ -9,7 +9,8 @@ const nextConfig = {
             },
         ]
     },
-    serverExternalPackages: ['sequelize', 'tedious', 'pg-hstore']
+    // Remove tedious from external packages so it gets bundled
+    serverExternalPackages: ['sequelize']
 }
 
 module.exports = nextConfig

@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { Sequelize } from "sequelize";
+// Force tedious to be bundled
+import * as tedious from "tedious";
+const _tediousCheck = tedious.Connection;
 
 export const dynamic = 'force-dynamic';
 

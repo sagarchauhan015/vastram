@@ -1,4 +1,9 @@
 import { Sequelize, Options } from "sequelize";
+// Force tedious to be bundled by importing it explicitly
+import * as tedious from "tedious";
+
+// Prevent tree-shaking from removing the tedious import  
+const _tediousCheck = tedious.Connection;
 
 // Get database config at runtime (not module load time)
 function getDbConfig() {

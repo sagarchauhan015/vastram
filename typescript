@@ -1,0 +1,35 @@
+Script started on Sun Feb 22 23:02:55 2026
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air vastram % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air vastram % [K[?2004h  node update-images.js[?2004l
+[dotenv@17.3.1] injecting env (14) from .env [2m-- tip: ⚡️ secrets for agents: https://dotenvx.com/as2[0m
+Connected to database
+✅ Crop Top
+✅ Classic White T-Shirt
+✅ Casual Chino Pants
+✅ Striped Polo Shirt
+✅ Women Skinny Jeans
+✅ Slim Fit Blue Jeans
+✅ Floral Summer Dress
+✅ Black Hoodie
+
+🎉 All images updated!
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air vastram % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air vastram % [K[?2004h  cd /Users/sagarchauhan/Downloads/vast [Krram-deployment/vastram/public/Images && rm -f tshirt1.png tshirt2.png tshirt3.pn [Kgg shirt.webp shirt2.png && ls[?2004l
+Infoicon.svg		carticon.svg		nocartitem.svg
+VASTRAM.png		crossicon.svg		overviewicon.svg
+atfImage.png		deleteicon.svg		plusicon.svg
+blogimg.gif		hamburger.svg		profileicon.svg
+carret.svg		logouticon.svg		searchicon.svg
+carret_black.svg	minusicon.svg		wishlisticon.svg
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h  rm update-images.js && curl -s http:// [Kllocalhost:3001/api/product | grep -o '"imgUrl":"[^"]*"' | head -3[?2004l
+rm: update-images.js: No such file or directory
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h  rm -f update-images.js && curl -s http [K:://localhost:3001/api/product | grep -o '"imgUrl":"[^"]*"' | head -3[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h  pgrep -f "next dev" && curl -s http:// [Kllocalhost:3001/api/product | head -c 200[?2004l
+78730
+79632
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/app/layout.css?v=1771781[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h  curl -s -H "Accept: application/json"  [Khhttp://localhost:3001/api/product 2>&1 | head -c 300[?2004l
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/app/layout.css?v=1771781621315" data-precedence="next_static/css/app/layout.css"/><link rel="preload" as="script" fetchPrior[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsagarchauhan@Sagars-MacBook-Air Images % [K[?2004h

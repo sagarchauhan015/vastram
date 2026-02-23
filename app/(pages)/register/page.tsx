@@ -3,7 +3,7 @@ import React from 'react'
 import RegisterBox from '@/Components/RegisterBox/RegisterBox'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/libs/auth/authOptions';
 import './register.css'
 
 export default async function register() {

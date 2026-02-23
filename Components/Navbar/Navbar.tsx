@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -24,6 +24,11 @@ export default function Navbar(props : any) {
     const router = useRouter();
     const updateCardsArray = useCardsArray((state) => state.updateCards);
     const cartArray  = useCartArray((state)=> state.cart)
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const [searchMenuVisibility, setsearchMenuVisibility] = useState<boolean>(false)
     const [searchResult, setsearchResult] = useState<[productInterface]>()
@@ -170,7 +175,7 @@ export default function Navbar(props : any) {
                     <Link href={"/cart"}>
                         <div className="nav-cart" title='Cart'>
                             <Image src={cartIcon} alt='searchicon' width={22} height={22}></Image>
-                            <div className="nav-cart-badge">{cartArray.length}</div>
+                            <div className="nav-cart-badge">{mounted ? cartArray.length : 0}</div>
                         </div>
                     </Link>
 

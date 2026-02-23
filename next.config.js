@@ -8,7 +8,8 @@ const nextConfig = {
               pathname: '/jkmgqwabx/**',
             },
         ]
-     }
+    },
+    serverExternalPackages: ['sequelize', 'tedious', 'pg-hstore']
 }
 
 module.exports = nextConfig

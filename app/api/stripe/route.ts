@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/libs/Stripe/stripe";
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/libs/auth/authOptions';
 import { User } from "@/models/user.model";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
+
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
+    
     try {
         let data = await request.json();
         const checkoutPrice = data.cartPrice;
@@ -49,8 +57,8 @@ export async function POST(request: NextRequest) {
                 enabled: true,
             },
             billing_address_collection: 'required',
-            success_url: `${process.env.PROD_APP_URL}/order`, //'http://localhost:3000/order',
-            cancel_url: `${process.env.PROD_APP_URL}/dashboard`, //'http://localhost:3000/dashboard',
+            success_url: `${process.env.NEXT_PUBLIC_APP_URL}/order`,
+            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/cart`,
             metadata: {
                 userId
             }

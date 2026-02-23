@@ -3,17 +3,15 @@ import { Size } from "@/models/size.model";
 import { NextRequest, NextResponse } from "next/server";
 import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
 import { Op } from "sequelize";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-// Build connection with database
-intializeConnection();
-// To sync the table (If table is not in DB, it will create the table)
-sequelize.sync();
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest, {params}: any){
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
     try {
         const searchQuery = request.nextUrl.searchParams.get('query');
         let keyword = `%${searchQuery}%`;
@@ -44,6 +42,6 @@ export async function GET(request: NextRequest, {params}: any){
         }
         return NextResponse.json(response)
       } catch (error) {
-        return { isSuccess: false, error: error };
+        return NextResponse.json({ isSuccess: false, error: String(error) }, { status: 500 });
       }
 }

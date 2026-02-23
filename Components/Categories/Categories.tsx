@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Image from 'next/image'
 import './Categories.css'
 import blogImg from '/public/Images/blogimg.gif'
-import tshirtImg from '/public/Images/shirt.webp'
 
+const tshirtImg = 'https://ik.imagekit.io/jkmgqwabx/vastram/men/tshirt.png?updatedAt=1697276900905';
 
 export default function Categories() {
   return (
@@ -23,7 +23,7 @@ export default function Categories() {
             </div>
 
             <div className="ct-box">
-              <Image src={tshirtImg} alt='product-image' width={300} height={250}></Image>
+              <Image src={tshirtImg} alt='product-image' width={300} height={250} unoptimized></Image>
               <div className="ct-type">
                 T-shirts
               </div>
@@ -44,7 +44,7 @@ export default function Categories() {
             </div>
 
             <div className="ct-box">
-              <Image src={tshirtImg} alt='product-image' width={300} height={250}></Image>
+              <Image src={tshirtImg} alt='product-image' width={300} height={250} unoptimized></Image>
               <div className="ct-type">
                 T-shirts
               </div>
@@ -58,7 +58,7 @@ export default function Categories() {
             </div>
 
             <div className="ct-box">
-              <Image src={tshirtImg} alt='product-image' width={300} height={250}></Image>
+              <Image src={tshirtImg} alt='product-image' width={300} height={250} unoptimized></Image>
               <div className="ct-type">
                 T-shirts
               </div>

@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcryptjs'
 import { User } from "@/models/user.model";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-intializeConnection();
-sequelize.sync();
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function POST(request : NextRequest){
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
   try {
       const data = await request.json();
       data['password'] = await bcrypt.hash(data.password, 6);
@@ -40,6 +40,6 @@ export async function POST(request : NextRequest){
       }
       return NextResponse.json(response)
     } catch (error) {
-      return { isSuccess: false, error: error };
+      return NextResponse.json({ isSuccess: false, error: String(error) }, { status: 500 });
     }
 }

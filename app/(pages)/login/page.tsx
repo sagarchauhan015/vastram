@@ -3,7 +3,7 @@ import LoginBox from '@/Components/LoginBox/LoginBox'
 
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/libs/auth/authOptions';
 
 import './login.css'
 

@@ -3,20 +3,19 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/libs/Stripe/stripe";
 import { Order } from "@/models/order.model";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-// Build connection with database
-intializeConnection();
-// To sync the table (If table is not in DB, it will create the table)
-sequelize.sync();
-
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
+    
     const body =  await request.text();
-    const signature = headers().get('Stripe-Signature') as string;
+    const headersList = await headers();
+    const signature = headersList.get('Stripe-Signature') as string;
 
     let event: Stripe.Event;
 

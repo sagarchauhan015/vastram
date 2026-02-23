@@ -2,24 +2,20 @@ import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
 import { NextRequest, NextResponse } from "next/server";
 import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-// Build connection with database
-intializeConnection();
-// To sync the table (If table is not in DB, it will create the table)
-sequelize.sync();
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest, {params}: any){
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
     try {
         const productId = request.nextUrl.searchParams.get('productId');
-        let whereJson = {
-          Id : productId
-        }
-        let queryJson = {
-          where: whereJson,
+        
+        // Build query - only filter by Id if productId is provided
+        let queryJson: any = {
           include: [
             {
               model: Size,
@@ -27,7 +23,13 @@ export async function GET(request: NextRequest, {params}: any){
               required: false, // This ensures a LEFT JOIN
             }
           ]
+        };
+        
+        // Only add where clause if productId is specified
+        if (productId) {
+          queryJson.where = { Id: productId };
         }
+        
         const items = await Product.findAll(queryJson);
         
         let dataArray = jsonUtils.convertArrayofModeltoDataArray(items);
@@ -39,6 +41,6 @@ export async function GET(request: NextRequest, {params}: any){
         }
         return NextResponse.json(response)
       } catch (error) {
-        return { isSuccess: false, error: error };
+        return NextResponse.json({ isSuccess: false, error: String(error) }, { status: 500 });
       }
 }

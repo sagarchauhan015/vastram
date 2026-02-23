@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import carretIcon from 'public/Images/carret.svg'
+import carretIcon from '/public/Images/carret.svg'
 import './CategoryHeader.css'
 import { stringUtils } from '@/utils/stringUtils/stringUtils'
 

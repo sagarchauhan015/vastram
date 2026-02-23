@@ -38,7 +38,7 @@ export default function CategoryCards(props: propsType) {
                                 cardData.map((cardDetial : any)=>{
                                     return(
                                         // /product?productId=${cardDetial.Id} change it later after the DB works,
-                                        <Link href={`/product?productId=${cardDetial.Id}`}>
+                                        <Link key={cardDetial.Id} href={`/product?productId=${cardDetial.Id}`}>
                                             <div className="cc-product-card-wrapper">
                                                 <ProductCard cardDetail = {cardDetial} />
                                             </div>

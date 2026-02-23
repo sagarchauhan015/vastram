@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import wishIcon from '/public/Images/wishlisticon.svg'
 import infoIcon from '/public/Images/Infoicon.svg'
-import carretIcon from 'public/Images/carret_black.svg'
+import carretIcon from '/public/Images/carret_black.svg'
 import { productFunctions } from '@/app/(pages)/product/productFunctions'
 import { useCartArray } from '@/store/store'
 
@@ -87,7 +87,7 @@ export default function ProductDetails(props: propsType) {
                 <div className="pd-container-left">
                     <div className="pd-img-detail">
                         <div className="pd-img">
-                            <Image className='pd-product-image' src={productData?.imgUrl ?? ""} width={1000} height={1000} alt='carret'></Image>
+                            {productData?.imgUrl && <Image className='pd-product-image' src={String(productData.imgUrl)} width={1000} height={1000} alt='product image' unoptimized></Image>}
                         </div>
                     </div>
                 </div>
@@ -162,11 +162,9 @@ export default function ProductDetails(props: propsType) {
                                 {
                                     productData?.sizes?.map(sizeData => {
                                         return(
-                                            <>
-                                                <div onClick={()=>handleSizeSelection(sizeData.size)} className={"pd-size-name" } tabIndex={sizeData.id}>
-                                                    {sizeData.size}
-                                                </div>
-                                            </>
+                                            <div key={sizeData.id} onClick={()=>handleSizeSelection(sizeData.size)} className={"pd-size-name" }>
+                                                {sizeData.size}
+                                            </div>
                                         )
                                     })
                                 }

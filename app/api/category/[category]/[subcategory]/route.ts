@@ -3,19 +3,15 @@ import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
 import { NextResponse } from "next/server";
 import { jsonUtils } from "@/utils/jsonUtils/jsonUtils";
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-
-
-// Build connection with database
-intializeConnection();
-// To sync the table (If table is not in DB, it will create the table)
-sequelize.sync();
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function GET(request : any, {params} : any){
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
   try {
     let whereJson = {
       category : params.category,
@@ -42,6 +38,6 @@ export async function GET(request : any, {params} : any){
     }
     return NextResponse.json(response)
   } catch (error) {
-    return { isSuccess: false, error: error };
+    return NextResponse.json({ isSuccess: false, error: String(error) }, { status: 500 });
   }
 }

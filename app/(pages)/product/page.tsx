@@ -6,11 +6,13 @@ import React from 'react'
 
 
 
-export default function Product(props: any){
+export default async function Product({ searchParams }: { searchParams: Promise<any> }){
+  const resolvedSearchParams = await searchParams;
+  
   return (
     <>
         <ProductDetails 
-          productId={props.searchParams.productId}
+          productId={resolvedSearchParams.productId}
         />
         <NewArrivals />
         <Footer />

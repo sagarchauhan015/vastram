@@ -5,11 +5,14 @@ import CategoryCards from '@/Components/CategoryCards/CategoryCards'
 import Footer from '@/Components/Footer/Footer'
 
 
-export default function page(props : any) {
+export default async function page({ params, searchParams }: { params: Promise<any>, searchParams: Promise<any> }) {
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+  
   return (
     <>
-        <CategoryHeader category={props.searchParams.category} subcategory={props.searchParams.subcategory} />
-        <CategoryCards category={props.searchParams.category}  />
+        <CategoryHeader category={resolvedSearchParams.category} subcategory={resolvedSearchParams.subcategory} />
+        <CategoryCards category={resolvedSearchParams.category}  />
         <Footer />
     </>
   )

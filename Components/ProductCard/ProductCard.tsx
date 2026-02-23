@@ -11,7 +11,7 @@ export default function ProductCard(props: any) {
         <div className="pc-container">
 
             <div className="pc-img">
-                <Image className='pc-image' src={props.cardDetail?.imgUrl} alt='product-image' width={1000} height={1000}></Image>
+                {props.cardDetail?.imgUrl && <Image className='pc-image' src={String(props.cardDetail.imgUrl)} alt='product-image' width={1000} height={1000} unoptimized></Image>}
             </div>
 
             <div className="pc-product-name">

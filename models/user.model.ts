@@ -32,7 +32,7 @@ export const User = sequelize.define('User', {
     },
     lastLogin: {
         type: DataTypes.DATE,
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: DataTypes.NOW,
         allowNull: false,
     },
     createdAt: DataTypes.DATE,

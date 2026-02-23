@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import blogImg from '/public/Images/blogimg.gif'
-import tshirt1 from '/public/Images/tshirt1.png'
-import tshirt2 from '/public/Images/tshirt2.png'
-import tshirt3 from '/public/Images/tshirt3.png'
+
+const tshirt1 = 'https://ik.imagekit.io/jkmgqwabx/vastram/men/tshirt.png?updatedAt=1697276900905';
+const tshirt2 = 'https://ik.imagekit.io/jkmgqwabx/vastram/men/greyShirt.webp?updatedAt=1696135970020';
+const tshirt3 = 'https://ik.imagekit.io/jkmgqwabx/vastram/women/tops.png?updatedAt=1697276756549';
 
 
 import './Fashion.css'
@@ -20,7 +21,7 @@ export default function Fashion() {
             <div className="fsn-right">
                 <div className="fsn-card">
                    <div className="fsn-card-img">
-                    <Image className='fsn-image' src={tshirt1} width={300} alt='fashion img'></Image>
+                    <Image className='fsn-image' src={tshirt1} width={300} height={300} alt='fashion img' unoptimized></Image>
                    </div>
                    <div className="fsn-card-text">
                         Occasion Red
@@ -28,7 +29,7 @@ export default function Fashion() {
                 </div>
                 <div className="fsn-card">
                    <div className="fsn-card-img">
-                    <Image className='fsn-image' src={tshirt2} width={300} alt='fashion img'></Image>
+                    <Image className='fsn-image' src={tshirt2} width={300} height={300} alt='fashion img' unoptimized></Image>
                    </div>
                    <div className="fsn-card-text">
                         Everyday Polo
@@ -36,7 +37,7 @@ export default function Fashion() {
                 </div>
                 <div className="fsn-card">
                    <div className="fsn-card-img">
-                    <Image className='fsn-image' src={tshirt3} width={300} alt='fashion img'></Image>
+                    <Image className='fsn-image' src={tshirt3} width={300} height={300} alt='fashion img' unoptimized></Image>
                    </div>
                    <div className="fsn-card-text">
                         Weekend Strap

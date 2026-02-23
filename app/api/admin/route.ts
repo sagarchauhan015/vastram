@@ -1,15 +1,15 @@
 import { Product } from "@/models/product.model";
 import { Size } from "@/models/size.model";
 import { NextResponse } from 'next/server';
+import {intializeConnection, syncDatabase} from '@/utils/databaseUtils/databaseUtils';
 
-import {intializeConnection} from '@/utils/databaseUtils/databaseUtils';
-import { sequelize } from '@/utils/databaseUtils/databaseUtils';
-
-
-intializeConnection();
-sequelize.sync();
+// Force dynamic rendering - prevents build-time execution
+export const dynamic = 'force-dynamic';
 
 export async function POST(request : any){
+    // Initialize database connection
+    await intializeConnection();
+    await syncDatabase();
     try {
         const data = await request.json();
         const product = await Product.create(data);
@@ -26,7 +26,7 @@ export async function POST(request : any){
         }
         return NextResponse.json(response)
       } catch (error) {
-        return { isSuccess: false, error: error };
+        return NextResponse.json({ isSuccess: false, error: String(error) }, { status: 500 });
       }
 }
 
